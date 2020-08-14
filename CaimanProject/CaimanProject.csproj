@@ -270,7 +270,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200814162230_InitDatabaseCaiman.cs" />
+    <Compile Include="Migrations\20200814162230_InitDatabaseCaiman.designer.cs">
+      <DependentUpon>20200814162230_InitDatabaseCaiman.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\DbCaimanContextModelSnapshot.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Associ.cs" />
     <Compile Include="Models\Competence.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\IdentityModels.cs" />

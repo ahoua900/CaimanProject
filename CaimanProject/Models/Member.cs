@@ -52,7 +52,7 @@ namespace CaimanProject.Models
         public Transport Transport { get; set; }
 
         //Recupere la liste des projet dont le membre participe
-        public ICollection<Projet> Projets { get; set; }
+        public ICollection<Associ> AssocisMemberProjet { get; set; }
 
         //Recupete la specialite dont le membre fait partie
         public Specialite Specialite { get; set; }

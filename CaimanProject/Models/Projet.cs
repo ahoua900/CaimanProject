@@ -24,7 +24,7 @@ namespace CaimanProject.Models
         public int ProjetMoney { get; set; }
 
         //recuper tous les membres qui sont dans le projet 
-        public ICollection<Member> Members { get; set; }
+        public ICollection<Associ> AssocisMemberProjet { get; set; }
         //Recupere toutes les notes sur le projets
         public ICollection<NoteP> NotePs { get; set; }
     }
