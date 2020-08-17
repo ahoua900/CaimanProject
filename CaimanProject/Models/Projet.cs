@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,7 @@ namespace CaimanProject.Models
 {
     public class Projet
     {
+       
         [Key]
         public int ProjetId { get; set; }
 
@@ -24,8 +26,9 @@ namespace CaimanProject.Models
         public int ProjetMoney { get; set; }
 
         //recuper tous les membres qui sont dans le projet 
-        public ICollection<Associ> AssocisMemberProjet { get; set; }
+        public ICollection<Associ> AssocisProjetsMember { get; set; }
         //Recupere toutes les notes sur le projets
+        [InverseProperty("ProjetNote")]
         public ICollection<NoteP> NotePs { get; set; }
     }
 }

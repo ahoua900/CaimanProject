@@ -266,13 +266,22 @@
     <Compile Include="Controllers\DepartementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MemberCtController.cs" />
     <Compile Include="DAL\DbCaimanContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20200814162230_InitDatabaseCaiman.cs" />
-    <Compile Include="Migrations\20200814162230_InitDatabaseCaiman.designer.cs">
-      <DependentUpon>20200814162230_InitDatabaseCaiman.cs</DependentUpon>
+    <Compile Include="Migrations\20200817124841_initialmigration.cs" />
+    <Compile Include="Migrations\20200817124841_initialmigration.designer.cs">
+      <DependentUpon>20200817124841_initialmigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200817145122_ajoutdemembre.cs" />
+    <Compile Include="Migrations\20200817145122_ajoutdemembre.designer.cs">
+      <DependentUpon>20200817145122_ajoutdemembre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200817154621_ajoutdetransport.cs" />
+    <Compile Include="Migrations\20200817154621_ajoutdetransport.designer.cs">
+      <DependentUpon>20200817154621_ajoutdetransport.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DbCaimanContextModelSnapshot.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -287,6 +296,7 @@
     <Compile Include="Models\SocialNetwork.cs" />
     <Compile Include="Models\Specialite.cs" />
     <Compile Include="Models\Transport.cs" />
+    <Compile Include="Models\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -370,9 +380,15 @@
     <Content Include="Views\Archive\Archive.cshtml" />
     <Content Include="Views\Departement\Departement.cshtml" />
     <Content Include="Views\Shared\NavBarPartial\_NavBar.cshtml" />
+    <Content Include="Views\Contact\NewContact.cshtml" />
+    <Content Include="Views\Contact\ModifContact.cshtml" />
+    <Content Include="Views\Departement\Ajouter.cshtml" />
+    <Content Include="Views\MemberCt\AddMember.cshtml" />
+    <Content Include="Views\Departement\VueDepartement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Fichier\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

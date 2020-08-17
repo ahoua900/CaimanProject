@@ -1,0 +1,115 @@
+﻿@model CaimanProject.Models.ViewModel
+
+<main class="main-content">
+    <div class="block">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb bg-white">
+                            <li class="breadcrumb-item"><a href="index.html">Tableau de bord</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Nouveau membre</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-12">
+                    <div class="departmentDesc">
+                        <h1>Nouveau membre</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="simple-card">
+                        <div class="simple-card__content">
+                            <form action="#" class="formular" method="post">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="nom">Nom</label>
+                                        <input type="text" class="form-control" id="MemberName" name="MemberName">
+                                    </div>
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="prenoms">Prénoms</label>
+                                        <input type="text" class="form-control" id="MemberPnom" name="MemberPnom">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="MemberSex">Sexe</label>
+                                        <select id="MemberSex" name="MemberSex" class="form-control">
+                                            <option value="Masculin">Masculin</option>
+                                            <option value="Feminin">Féminin</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-5">
+                                    <label for="exampleFormControlTextarea1">Description</label>
+                                    <textarea class="form-control" id="MemberDescription" name="MemberDescription" rows="5"></textarea>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="date">Date de naissance</label>
+                                        <input type="date" class="form-control" name="MemberNaissance" id="MemberNaissance">
+                                    </div>
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="place">Lieu de naissance</label>
+                                        <input type="text" class="form-control" id="MemberLieuNaissance" name="MemberLieuNaissance">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="MemberMail" name="MemberMail">
+                                    </div>
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="tel">Téléphone</label>
+                                        <input type="text" class="form-control" id="MemberPhone" name="MemberPhone">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="com">Commune d'habitation</label>
+                                        <input type="text" class="form-control" id="MemberCommune" name="MemberCommune">
+                                    </div>
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="tierk">Quartier de résidence</label>
+                                        <input type="text" class="form-control" id="MemberQuartier" name="MemberQuartier">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="trsp">Transport utilisé</label>
+                                        <select id="Transport" name="Transport" class="form-control">
+                                            <option value="Bus">Bus</option>
+                                            <option value="Taxi communal">Taxi communal</option>
+                                            <option value="Véhicule personnel">Véhicule personnel</option>
+                                            <option value="Compteur">Compteur</option>
+                                            <option value="Bateau">Bateau</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="tierk">Spécialité</label>
+                                        <select id="Specialite" name="Specialite" class="form-control">
+                                            <option value="Csharp"> Specialités</option>
+                                            @foreach (var item in ViewBag.spe)
+                                            {
+                                                <option value="@item.SpecialiteName">@item.SpecialiteName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-green">
+                                    Enregistrer
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+</main> 

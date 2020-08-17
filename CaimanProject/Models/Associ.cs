@@ -7,10 +7,9 @@ namespace CaimanProject.Models
 {
     public class Associ
     {
-        public Projet Projet { get; set; }
         public int ProjetId { get; set; }
-
-        public Member Member { get; set; }
         public int MemberId { get; set; }
+        public Projet Projet { get; set; }
+        public Member Member{ get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Services.Description;
@@ -9,9 +10,9 @@ namespace CaimanProject.Models
 {
     public class Member
     {
+       
         [Key]
         public int MemberId { get; set; }
-
         public string MemberName { get; set; }
 
         public string MemberPnom { get; set; }
@@ -24,10 +25,8 @@ namespace CaimanProject.Models
 
         public string MemberLieuNaissance { get; set; }
 
-        [EmailAddress]
         public string MemberMail { get; set; }
 
-        [Phone]
         public int MemberPhone { get; set; }
 
         public string MemberImageName { get; set; }
@@ -45,21 +44,10 @@ namespace CaimanProject.Models
         public int MemberMissionActive { get; set; }
 
         public int MemberNote { get; set; }
-        // recupere la liste des reseaux sociaux du membre
-        public ICollection<SocialNetwork> SocialNetworks { get; set; }
+        
+        public string Specialite { get; set; }
 
-        //recupere un transport
-        public Transport Transport { get; set; }
-
-        //Recupere la liste des projet dont le membre participe
-        public ICollection<Associ> AssocisMemberProjet { get; set; }
-
-        //Recupete la specialite dont le membre fait partie
-        public Specialite Specialite { get; set; }
-
-        //la recuperation de la liste des competences
-        public ICollection<Competence> Competences { get; set; }
-
+        public string Transport { get; set; }
     }
 
 
