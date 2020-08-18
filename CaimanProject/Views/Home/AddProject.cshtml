@@ -1,0 +1,105 @@
+﻿@model CaimanProject.Models.ViewModel
+<main class="main-content">
+    <div class="block">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb bg-white">
+                            <li class="breadcrumb-item"><a href="/Home/Index">Tableau de bord</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Nouveau projet</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-12">
+                    <div class="departmentDesc">
+                        <h1>Nouveau projets</h1>
+                    </div>
+                </div>
+            </div>
+            <form action="#" class="formular" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="simple-card">
+                            <div class="simple-card__content">
+                                <div class="form-group mb-5">
+                                    <label for="nom">Désignation du projet</label>
+                                    <input type="text" class="form-control" id="ProjetName" name="ProjetName">
+                                </div>
+                                <div class="form-group mb-5">
+                                    <label for="nom">Gain du projet</label>
+                                    <input type="text" class="form-control" id="ProjetMoney" name="ProjetMoney">
+                                </div>
+                                <div class="form-group mb-5">
+                                    <label for="exampleFormControlTextarea1">Description</label>
+                                    <textarea class="form-control" id="ProjetDescription" name="ProjetDescription" rows="5"></textarea>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="cc">Cahier des charges</label>
+                                        <input type="file" class="form-control" id="ProjetCahierCharge" name="ProjetCahierCharge">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="col-12">
+                        <div class="departmentDesc">
+                            <h1>Choix des membres</h1>
+                        </div>
+                    </div>
+                    @foreach (var item in Model.Specialites)
+                    {
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="simple-card">
+                                    <div class="simple-card__content">
+                                        <h3>@item.SpecialiteName</h3>
+                                        <ul class="dmembers-list">
+                                            @foreach (var it in Model.Members.Where(s => s.Specialite == item.SpecialiteName))
+                                            {
+                                                <li>
+                                                    <div class="form__radio-group">
+                                                        <input type="checkbox" name="Members" value="@it.MemberId">
+                                                        <label  class="form__radio-label">
+                                                            <div class="member-line">
+                                                                <div class="photo-box " style="border:2px solid @item.SpecialiteColor">
+                                                                    <img src="/Fichier/@it.MemberImageName" alt="username">
+                                                                </div>
+                                                                <div class="member-line__info">
+                                                                    <h4>@it.MemberName @it.MemberPnom</h4>
+                                                                    <div class="d-flex align-items-center">
+                                                                        @if (@it.MemberMissonFin == null)
+                                                                        {
+                                                                            <span>0 missions en cours -</span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span>@it.MemberMissonFin missions en cours -</span>
+                                                                        }
+                                                                        <div class="round"></div>
+                                                                        <div class="round"></div>
+                                                                        <div class="round"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                             
+                                            }
+
+                                        </ul>
+                                    </div>
+                                </div>
+                             </div>
+                    }*@
+                    
+                    <button type="submit" class="btn-green">
+                        Enregistrer
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</main>

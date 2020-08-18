@@ -4,14 +4,16 @@ using CaimanProject.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CaimanProject.Migrations
 {
     [DbContext(typeof(DbCaimanContext))]
-    partial class DbCaimanContextModelSnapshot : ModelSnapshot
+    [Migration("20200818141710_ajoutdeprojet")]
+    partial class ajoutdeprojet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,9 +106,6 @@ namespace CaimanProject.Migrations
                     b.Property<string>("MemberStatus")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProjetId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Specialite")
                         .HasColumnType("nvarchar(max)");
 
@@ -114,8 +113,6 @@ namespace CaimanProject.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MemberId");
-
-                    b.HasIndex("ProjetId");
 
                     b.ToTable("Members");
                 });
@@ -204,13 +201,6 @@ namespace CaimanProject.Migrations
                     b.HasKey("SpecialiteId");
 
                     b.ToTable("Specialites");
-                });
-
-            modelBuilder.Entity("CaimanProject.Models.Member", b =>
-                {
-                    b.HasOne("CaimanProject.Models.Projet", null)
-                        .WithMany("Members")
-                        .HasForeignKey("ProjetId");
                 });
 
             modelBuilder.Entity("CaimanProject.Models.NoteP", b =>

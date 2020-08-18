@@ -25,10 +25,10 @@ namespace CaimanProject.Models
         public string ProjetCahierCharge { get; set; }
         public int ProjetMoney { get; set; }
 
-        //recuper tous les membres qui sont dans le projet 
-        public ICollection<Associ> AssocisProjetsMember { get; set; }
-        //Recupere toutes les notes sur le projets
-        [InverseProperty("ProjetNote")]
-        public ICollection<NoteP> NotePs { get; set; }
+        public ICollection<Member> Members { get; set; } 
+        public string BilanProjet { get; set; }
+     
+        public  ICollection<NoteP> NoteP { get; set; }
+ 
     }
 }

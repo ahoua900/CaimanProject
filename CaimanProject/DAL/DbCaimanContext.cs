@@ -17,7 +17,7 @@ namespace CaimanProject.DAL
 
          public DbSet<Transport> Transports { get; set; }
 
-         public DbSet<Projet> Projets { get; set; }
+         
   public DbSet<Competence> Competences { get; set; }
          public DbSet<Associ> Associs { get; set; }*/
         public DbSet<Member> Members { get; set; }
@@ -25,7 +25,7 @@ namespace CaimanProject.DAL
        
         public DbSet<Contact> Contacts { get; set; }
        
-
+        public DbSet<Projet> Projets { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

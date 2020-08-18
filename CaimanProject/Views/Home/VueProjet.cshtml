@@ -1,0 +1,152 @@
+﻿@model CaimanProject.Models.ViewM
+<main class="main-content">
+    
+    <div class="block">
+        <div class="container-fluid">         
+                <div class="row">
+                    <div class="col-12">
+                        <div class="departmentDesc">
+                            <h1>@Model.Projets.ProjetName</h1>
+                            <p>
+                                @Model.Projets.ProjetDescription
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <a href="/Home/Directive/@Model.Projets.ProjetId">
+                                    <button class="img-btn">
+                                        <ul>
+                                            <li>
+                                                <img src="" alt="">
+                                            </li>
+                                            <li>
+                                                <span>Cahier de charge</span>
+                                            </li>
+                                        </ul>
+                                    </button>
+                                </a>
+                                &nbsp;&nbsp;
+                                <a href="finishProject.html">
+                                    <button class="btn-green">
+                                        projet terminer
+                                    </button>
+                                </a>
+                            </div>
+                            <div class="simple-card">
+                                <div class="simple-card__progress mt-4">
+                                    <div class="progress">
+                                        <div class="progression" style="width: @Model.Projets.ProjetProgressBar%;"></div>
+                                    </div>
+                                    <span>@Model.Projets.ProjetProgressBar%</span>
+                                </div>
+                            </div>
+                            <ul class="dmembers-list">
+                                <li>
+                                    <a href="#">
+                                        <div class="member-line">
+                                            <div class="photo-box br-frontend">
+                                                <img src="/Content/img/user.png" alt="username">
+                                            </div>
+                                            <div class="member-line__info">
+                                                <h4>Koffi Anvi Yves Donald</h4>
+                                                <div class="d-flex align-items-center">
+                                                    <span>Front end -</span>&nbsp;
+                                                    <div class="round"></div>
+                                                    <div class="round"></div>
+                                                    <div class="round"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li style="border-bottom: none;">
+                                    <a href="#" data-toggle="modal" data-target="#exampleModalLong">
+                                        <div class="member-line">
+                                            <div class="photo-box">
+                                                <img src="/content/icons/add.svg" alt="username">
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-6">
+                    <h2 class="mb-5">notes _ <small>24 notes</small></h2>
+                    <div class="simple-card">
+                        <div class="simple-card__content">
+                            <ol class="onote-list mb-5">
+                                <li>
+                                <div class="onote">
+                                    <span>12 Jan 2020</span>
+                                    <p class="pgh">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Recusandae a sint itaque reiciendis repudiandae delectus
+                                        accusamus sequi dolorum sed, corporis, commodi nulla!
+                                        Reprehenderit dolores provident perspiciatis vero necessitatibus
+                                        debitis cumque.
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Recusandae a sint itaque reiciendis repudiandae delectus
+                                        accusamus sequi dolorum sed, corporis, commodi nulla!
+                                        Reprehenderit dolores provident perspiciatis vero necessitatibus
+                                        debitis cumque.
+                                    </p>
+                                    <a href="readnote.html" class="link">Lire la suite</a>
+                                </div>
+                                </li>
+                            </ol>
+                            <div class="d-flex align-items-center">
+                                <a href="notes.html" target="_blank">
+                                    <button class="img-btn">
+                                        <span>Plus</span>
+                                    </button>
+                                </a>
+                                &nbsp;&nbsp;
+                                <a href="newnote.html">
+                                    <button class="btn-green">
+                                        Nouvelle note
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-6">
+                    <h2 class="mb-5">Paramètres</h2>
+                    <div class="simple-card__content mb-5">
+                        <a href="#" data-toggle="modal" data-target="#progressModal">
+                            <button class="btn-green">
+                                Augmenter la progression
+                            </button>
+                        </a>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="progressModal" tabindex="-1" role="dialog" aria-labelledby="progressModalTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content my-modal">
+                                <div class="modal-header br-none">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Actuellement : @Model.Projets.ProjetProgressBar %</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="#" class="formular" method="post">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" id="ProjetProgressBar" name="ProjetProgressBar" placeholder="progression du projet">
+                                        </div>
+                                        <button type="submit" class="btn-green">valider</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>

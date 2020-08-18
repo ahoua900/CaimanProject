@@ -1,0 +1,23 @@
+﻿<table class="table">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>SenderName</th>
+                                                    <th>SenderEmail</th>
+                                                    <th>Message</th>
+                                                </tr>
+                                            </thead>
+                                            @foreach (var item in ViewBag.listname)
+                                            {
+                                                <tbody>
+                                                    <tr>
+                                                        <td>@item.ID</td>
+                                                        <td>@item.SenderName</td>
+                                                        <td>@item.SenderEmail</td>
+                                                        <td>@item.Message</td>
+                                                        <td>@Html.ActionLink("Supprimer", "Delete", new { id = item.ID })</td>
+                                                    </tr>
+
+                                                </tbody>
+                                            }
+                                        </table>

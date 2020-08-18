@@ -1,39 +1,26 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
+﻿@model CaimanProject.Models.ViewModel
 <main class="main-content">
     <div class="block">
         <div class="container-fluid">
             <div class="row">
+                @foreach (var item in Model.Projets)
+                {
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                    <a href="project.html">
+                    <a href="/Home/VueProjet/@item.ProjetId">
                         <div class="simple-card">
                             <div class="simple-card__content">
-                                <span>En cours depuis le 30 Jan 2020</span>
-                                <h2 class="mt-2">Plateforme de gestion d'entreprise</h2>
+                                <span>En cours depuis le @item.ProjetDateDebut.ToString("dd MMM yyyy")</span>
+                                <h2 class="mt-2">@item.ProjetName</h2>
                                 <p>
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit sunt odio ea
-                                    facilis, cumque saepe. Nulla voluptatem repudiandae labore, facere a ab, aliquid dignissimos alias voluptates
-                                    repellat itaque optio soluta beatae quam consequatur eius ratione aliquam doloribus. Quaerat, id alias.
+                                    @item.ProjetDescription
                                 </p>
                                 <div class="members">
                                     <span>membres</span>
+
                                     <ul class="mb-0 mt-3">
                                         <li>
                                             <div class="br-frontend">
-                                                <img src="~/Content/img/user.png" class="rounduser" alt="username" title="username">
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="br-javascript">
-                                                <img src="~/Content/img/user.png" class="rounduser" alt="username" title="username">
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="br-mutimedia">
-                                                <img src="~/Content/img/user.png" class="rounduser" alt="username" title="username">
+                                                <img src="/Content/img/user.png" class="rounduser" alt="username" title="username">
                                             </div>
                                         </li>
                                     </ul>
@@ -41,17 +28,19 @@
                             </div>
                             <div class="simple-card__progress mt-4">
                                 <div class="progress">
-                                    <div class="progression" style="width: 40%;"></div>
+                                    <div class="progression" style="width: @item.ProjetProgressBar%;"></div>
                                 </div>
-                                <span>40%</span>
+                                <span>@item.ProjetProgressBar%</span>
                             </div>
                         </div>
                     </a>
                 </div>
+                }
+                
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                    <a href="newProject.html">
+                    <a href="/Home/AddProject">
                         <div class="addProject">
-                            <img src="~/Content/icons/add.svg" alt="icon">
+                            <img src="/Content/icons/add.svg" alt="icon">
                         </div>
                     </a>
                 </div>
