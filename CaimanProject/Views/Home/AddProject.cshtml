@@ -43,61 +43,62 @@
                             </div>
                         </div>
                     </div>
-                    @*<div class="col-12">
+                    <div class="col-12">
                         <div class="departmentDesc">
                             <h1>Choix des membres</h1>
                         </div>
                     </div>
-                    @foreach (var item in Model.Specialites)
+                    @*@foreach (var item in Model.Specialites)
                     {
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <div class="simple-card">
-                                    <div class="simple-card__content">
-                                        <h3>@item.SpecialiteName</h3>
-                                        <ul class="dmembers-list">
-                                            @foreach (var it in Model.Members.Where(s => s.Specialite == item.SpecialiteName))
-                                            {
-                                                <li>
-                                                    <div class="form__radio-group">
-                                                        <input type="checkbox" name="Members" value="@it.MemberId">
-                                                        <label  class="form__radio-label">
-                                                            <div class="member-line">
-                                                                <div class="photo-box " style="border:2px solid @item.SpecialiteColor">
-                                                                    <img src="/Fichier/@it.MemberImageName" alt="username">
-                                                                </div>
-                                                                <div class="member-line__info">
-                                                                    <h4>@it.MemberName @it.MemberPnom</h4>
-                                                                    <div class="d-flex align-items-center">
-                                                                        @if (@it.MemberMissonFin == null)
-                                                                        {
-                                                                            <span>0 missions en cours -</span>
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            <span>@it.MemberMissonFin missions en cours -</span>
-                                                                        }
-                                                                        <div class="round"></div>
-                                                                        <div class="round"></div>
-                                                                        <div class="round"></div>
-                                                                    </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="simple-card">
+                                <div class="simple-card__content">
+                                    <h3>@item.SpecialiteName</h3>
+                                    <ul class="dmembers-list">
+                                        @foreach (var it in Model.Members.Where(s => s.Specialite == item.SpecialiteName))
+                                        {
+                                            <li>
+                                                <div class="form__radio-group">
+                                                    <input type="checkbox" name="">
+                                                    <label class="form__radio-label">
+                                                        <div class="member-line">
+                                                            <div class="photo-box " style="border:2px solid @item.SpecialiteColor">
+                                                                <img src="/Fichier/@it.MemberImageName" alt="username">
+                                                            </div>
+                                                            <div class="member-line__info">
+                                                                <h4>@it.MemberName @it.MemberPnom</h4>
+                                                                <div class="d-flex align-items-center">
+                                                                    @if (@it.MemberMissonFin == null)
+                                                                    {
+                                                                        <span>0 missions en cours -</span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span>@it.MemberMissonFin missions en cours -</span>
+                                                                    }
+                                                                    <div class="round"></div>
+                                                                    <div class="round"></div>
+                                                                    <div class="round"></div>
                                                                 </div>
                                                             </div>
-                                                        </label>
-                                                    </div>
-                                                </li>
-                                             
-                                            }
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </li>
 
-                                        </ul>
-                                    </div>
+                                        }
+
+                                    </ul>
                                 </div>
-                             </div>
-                    }*@
-                    
-                    <button type="submit" class="btn-green">
-                        Enregistrer
-                    </button>
+                            </div>
+                        </div>
+                    }
+*@
+
                 </div>
+                <button type="submit" class="btn-green">
+                    Enregistrer
+                </button>
             </form>
 
         </div>

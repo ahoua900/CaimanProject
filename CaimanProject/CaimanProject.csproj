@@ -271,25 +271,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20200817124841_initialmigration.cs" />
-    <Compile Include="Migrations\20200817124841_initialmigration.designer.cs">
-      <DependentUpon>20200817124841_initialmigration.cs</DependentUpon>
+    <Compile Include="Migrations\20200819150732_colonnemembres.cs" />
+    <Compile Include="Migrations\20200819150732_colonnemembres.designer.cs">
+      <DependentUpon>20200819150732_colonnemembres.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20200817145122_ajoutdemembre.cs" />
-    <Compile Include="Migrations\20200817145122_ajoutdemembre.designer.cs">
-      <DependentUpon>20200817145122_ajoutdemembre.cs</DependentUpon>
+    <Compile Include="Migrations\20200819164213_colonnemembr.cs" />
+    <Compile Include="Migrations\20200819164213_colonnemembr.designer.cs">
+      <DependentUpon>20200819164213_colonnemembr.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20200817154621_ajoutdetransport.cs" />
-    <Compile Include="Migrations\20200817154621_ajoutdetransport.designer.cs">
-      <DependentUpon>20200817154621_ajoutdetransport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200818141710_ajoutdeprojet.cs" />
-    <Compile Include="Migrations\20200818141710_ajoutdeprojet.designer.cs">
-      <DependentUpon>20200818141710_ajoutdeprojet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200818151123_ajoutdecolonneaprojet.cs" />
-    <Compile Include="Migrations\20200818151123_ajoutdecolonneaprojet.designer.cs">
-      <DependentUpon>20200818151123_ajoutdecolonneaprojet.cs</DependentUpon>
+    <Compile Include="Migrations\20200819172712_boole.cs" />
+    <Compile Include="Migrations\20200819172712_boole.designer.cs">
+      <DependentUpon>20200819172712_boole.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DbCaimanContextModelSnapshot.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -398,6 +390,7 @@
     <Content Include="Views\Home\AddProject.cshtml" />
     <Content Include="Views\Home\VueProjet.cshtml" />
     <Content Include="Views\Home\Directive.cshtml" />
+    <Content Include="Views\Home\FinProjet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

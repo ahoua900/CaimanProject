@@ -31,28 +31,34 @@ namespace CaimanProject.Controllers
             var bd = db.Projets.Find(id);
             var ne = new ViewM();
             ne.Projets = pros;
+            ViewBag.list = db.Members.ToList();
             return View(ne);
         }
 
         [HttpPost]
-        public ActionResult VueProjet(Projet projet,int id)
+        public ActionResult VueProjet(Projet projet, int id)
         {
             var bf = db.Projets.Find(id);
-
             bf.ProjetProgressBar = projet.ProjetProgressBar;
+            if (bf.ProjetProgressBar == 100)
+            {
+                bf.IsArchieved = true;
+            }
             db.Projets.Update(bf);
             db.SaveChanges();
             return RedirectToAction("VueProjet");
+
         }
 
-        private Projet GetProd(int id)
+            private Projet GetProd(int id)
         {
             return db.Projets.Find(id);
         }
 
         private List<Projet> Getprojet()
         {
-            return db.Projets.ToList();
+            var bd = db.Projets.Where(s => s.IsArchieved == false);
+            return bd.ToList();
         }
 
         public ActionResult AddProject()
@@ -76,7 +82,7 @@ namespace CaimanProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddProject(Projet projet)
+        public ActionResult AddProject(Projet projet, Member member,Associ associ)
         {
             if (Request.Files.Count > 0)
             {
@@ -90,9 +96,7 @@ namespace CaimanProject.Controllers
                     projet.ProjetDateDebut = DateTime.Now;
                     db.Projets.Add(projet);
                     db.SaveChanges();
-
                 }
-
             }
             return RedirectToAction("AddProject");
         }
@@ -101,6 +105,12 @@ namespace CaimanProject.Controllers
         {
             var bd = db.Projets.Find(id);
             return View(bd);
+        }
+
+        public ActionResult FinProjet()
+        {
+            ViewBag.List = db.Projets.Where(s => s.IsArchieved == true).ToList();
+            return View();
         }
     }
 }

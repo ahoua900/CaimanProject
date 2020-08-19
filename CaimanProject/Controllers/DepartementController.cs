@@ -105,9 +105,7 @@ namespace CaimanProject.Controllers
                     bd.MemberImageName = fileName;
                     db.Members.Update(bd);
                     db.SaveChanges();
-
                 }
-
             }
             else
             {
@@ -125,9 +123,6 @@ namespace CaimanProject.Controllers
             }
             return RedirectToAction("ProfilMember");
         }
-
-      
-
     }
     
 }

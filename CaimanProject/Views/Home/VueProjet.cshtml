@@ -150,3 +150,52 @@
         </div>
     </div>
 </main>
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content my-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Ajouter des membres</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="post">
+                    <ul class="dmembers-list">
+                       
+                            @foreach (var item in ViewBag.list)
+                            {
+                                <li>
+                                    <div class="form__radio-group">
+                                        <input type="checkbox" name="Ischecked" >
+                                        <label for="user1" class="form__radio-label">
+                                            <span class="form__radio-button"></span>
+                                            <div class="member-line">
+                                                <div class="photo-box " style="border:2px solid Purple">
+                                                    <img src="/Fichier/@item.MemberImageName" alt="username">
+                                                </div>
+                                                <div class="member-line__info">
+                                                    <h4>@item.MemberName @item.MemberPnom</h4>
+                                                    <div class="d-flex align-items-center">
+                                                        <span>@item.Specialite-</span>&nbsp;
+                                                        <div class="round"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </li>
+                            }
+                        
+
+
+
+                    </ul>
+
+                    <br>
+                    <button type="submit" class="btn-green">Enregistrer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

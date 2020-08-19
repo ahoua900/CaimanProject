@@ -10,6 +10,7 @@ namespace CaimanProject.Models
 {
     public class Member
     {
+      
        
         [Key]
         public int MemberId { get; set; }
@@ -48,6 +49,7 @@ namespace CaimanProject.Models
         public string Specialite { get; set; }
 
         public string Transport { get; set; }
+
     }
 
 

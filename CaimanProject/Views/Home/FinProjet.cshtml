@@ -1,0 +1,50 @@
+﻿@model CaimanProject.Models.Projet
+<main class="main-content">
+    <div class="block">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="departmentDesc">
+                        <h1>Projets terminés</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in ViewBag.List)
+                {
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                        <a href="/Home/VueProjet/@item.ProjetId">
+                            <div class="simple-card">
+                                <div class="simple-card__content">
+                                    <span>En cours depuis le @item.ProjetDateDebut.ToString("dd MMM yyyy")</span>
+                                    <h2 class="mt-2">@item.ProjetName</h2>
+                                    <p>
+                                        @item.ProjetDescription
+                                    </p>
+                                    <div class="members">
+                                        <span>membres</span>
+
+                                        <ul class="mb-0 mt-3">
+                                            <li>
+                                                <div class="br-frontend">
+                                                    <img src="/Content/img/user.png" class="rounduser" alt="username" title="username">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <div class="simple-card__progress mt-4 text-center justify-content-center">
+                                <div>
+                                    <img src="/Content/icons/start.svg" class="finish-icon img-fluid" alt="finished">
+                                    <h4 class="mt-2 cl-teal">@item.ProjetMoney F CFA</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</main>

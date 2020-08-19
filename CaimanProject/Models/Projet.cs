@@ -10,7 +10,7 @@ namespace CaimanProject.Models
 {
     public class Projet
     {
-       
+
         [Key]
         public int ProjetId { get; set; }
 
@@ -24,11 +24,10 @@ namespace CaimanProject.Models
         public int ProjetProgressBar { get; set; }
         public string ProjetCahierCharge { get; set; }
         public int ProjetMoney { get; set; }
+        public bool IsArchieved { get; set; }
 
-        public ICollection<Member> Members { get; set; } 
         public string BilanProjet { get; set; }
      
-        public  ICollection<NoteP> NoteP { get; set; }
  
     }
 }

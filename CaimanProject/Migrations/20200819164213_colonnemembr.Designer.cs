@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaimanProject.Migrations
 {
     [DbContext(typeof(DbCaimanContext))]
-    [Migration("20200817145122_ajoutdemembre")]
-    partial class ajoutdemembre
+    [Migration("20200819164213_colonnemembr")]
+    partial class colonnemembr
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,21 @@ namespace CaimanProject.Migrations
                 .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("CaimanProject.Models.Associ", b =>
+                {
+                    b.Property<int>("ProjetId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MemberId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProjetId", "MemberId");
+
+                    b.HasIndex("MemberId");
+
+                    b.ToTable("Associs");
+                });
 
             modelBuilder.Entity("CaimanProject.Models.Contact", b =>
                 {
@@ -109,9 +124,48 @@ namespace CaimanProject.Migrations
                     b.Property<string>("Specialite")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Transport")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("MemberId");
 
                     b.ToTable("Members");
+                });
+
+            modelBuilder.Entity("CaimanProject.Models.Projet", b =>
+                {
+                    b.Property<int>("ProjetId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BilanProjet")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProjetCahierCharge")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ProjetDateDebut")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ProjetDateFin")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ProjetDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProjetMoney")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProjetName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProjetProgressBar")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProjetId");
+
+                    b.ToTable("Projets");
                 });
 
             modelBuilder.Entity("CaimanProject.Models.Specialite", b =>
@@ -139,6 +193,21 @@ namespace CaimanProject.Migrations
                     b.HasKey("SpecialiteId");
 
                     b.ToTable("Specialites");
+                });
+
+            modelBuilder.Entity("CaimanProject.Models.Associ", b =>
+                {
+                    b.HasOne("CaimanProject.Models.Member", "Member")
+                        .WithMany("AssocisProjetsMember")
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CaimanProject.Models.Projet", "Projet")
+                        .WithMany("AssocisProjetsMember")
+                        .HasForeignKey("ProjetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

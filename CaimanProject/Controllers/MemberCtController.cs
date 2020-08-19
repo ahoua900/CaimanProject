@@ -37,11 +37,10 @@ namespace CaimanProject.Controllers
         [HttpPost]
         public ActionResult AddMember(Member member)
         {
-            if (ModelState.IsValid)
-            {
+            
                 db.Members.Add(member);
                 db.SaveChanges();
-            }
+     
             return RedirectToAction("AddMember");
         }
     }

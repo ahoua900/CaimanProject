@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaimanProject.Migrations
 {
     [DbContext(typeof(DbCaimanContext))]
-    [Migration("20200818141710_ajoutdeprojet")]
-    partial class ajoutdeprojet
+    [Migration("20200819172712_boole")]
+    partial class boole
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -117,29 +117,6 @@ namespace CaimanProject.Migrations
                     b.ToTable("Members");
                 });
 
-            modelBuilder.Entity("CaimanProject.Models.NoteP", b =>
-                {
-                    b.Property<int>("NotePId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("NotePDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NotePDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ProjetNoteProjetId")
-                        .HasColumnType("int");
-
-                    b.HasKey("NotePId");
-
-                    b.HasIndex("ProjetNoteProjetId");
-
-                    b.ToTable("NoteP");
-                });
-
             modelBuilder.Entity("CaimanProject.Models.Projet", b =>
                 {
                     b.Property<int>("ProjetId")
@@ -149,6 +126,9 @@ namespace CaimanProject.Migrations
 
                     b.Property<string>("BilanProjet")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsArchieved")
+                        .HasColumnType("bit");
 
                     b.Property<string>("ProjetCahierCharge")
                         .HasColumnType("nvarchar(max)");
@@ -201,13 +181,6 @@ namespace CaimanProject.Migrations
                     b.HasKey("SpecialiteId");
 
                     b.ToTable("Specialites");
-                });
-
-            modelBuilder.Entity("CaimanProject.Models.NoteP", b =>
-                {
-                    b.HasOne("CaimanProject.Models.Projet", "ProjetNote")
-                        .WithMany("NoteP")
-                        .HasForeignKey("ProjetNoteProjetId");
                 });
 #pragma warning restore 612, 618
         }
