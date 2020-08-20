@@ -40,12 +40,19 @@ namespace CaimanProject.Controllers
         {
             var bf = db.Projets.Find(id);
             bf.ProjetProgressBar = projet.ProjetProgressBar;
-            if (bf.ProjetProgressBar == 100)
+                 if (bf.ProjetProgressBar == 100)
+                 {
+                     bf.IsArchieved = true;
+                 }
+
+            if (bf.ProjetProgressBar < 100)
             {
-                bf.IsArchieved = true;
+                bf.IsArchieved = false;
             }
-            db.Projets.Update(bf);
-            db.SaveChanges();
+             db.Projets.Update(bf);
+             db.SaveChanges();
+            
+           
             return RedirectToAction("VueProjet");
 
         }
@@ -57,7 +64,7 @@ namespace CaimanProject.Controllers
 
         private List<Projet> Getprojet()
         {
-            var bd = db.Projets.Where(s => s.IsArchieved == false);
+            var bd = db.Projets.Where(s => s.IsArchieved == false || s.ProjetProgressBar < 100);
             return bd.ToList();
         }
 

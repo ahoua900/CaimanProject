@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaimanProject.Migrations
 {
     [DbContext(typeof(DbCaimanContext))]
-    [Migration("20200819172712_boole")]
-    partial class boole
+    [Migration("20200820142419_updates")]
+    partial class updates
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,24 @@ namespace CaimanProject.Migrations
                 .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("CaimanProject.Models.Competence", b =>
+                {
+                    b.Property<int>("CompetenceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CompetenceName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Idmembre")
+                        .HasColumnType("int");
+
+                    b.HasKey("CompetenceId");
+
+                    b.ToTable("Competences");
+                });
 
             modelBuilder.Entity("CaimanProject.Models.Contact", b =>
                 {
@@ -67,7 +85,7 @@ namespace CaimanProject.Migrations
                     b.Property<string>("MemberImageName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("MemberIsArchived")
+                    b.Property<bool>("MemberIsArchived")
                         .HasColumnType("bit");
 
                     b.Property<string>("MemberLieuNaissance")

@@ -52,10 +52,16 @@
                                                 <h4>@item.MemberName @item.MemberPnom</h4>
                                                 <div class="d-flex align-items-center">
                                                     <span>Membre simple -</span>&nbsp;
-                                                    <div class="round"></div>
-                                                    <div class="round"></div>
-                                                    <div class="round"></div>
+                                                    @for (int i = 0; i < item.MemberNote;)
+                                                    {
+                                                        <div class="round"></div>
+                                                        i++;
+                                                    }
                                                 </div>
+                                                
+                                                    <span>Etudiant--</span>&nbsp;
+                                                    
+                                             
                                             </div>
                                         </div>
                                     </a>

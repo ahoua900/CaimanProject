@@ -18,9 +18,10 @@ namespace CaimanProject.DAL
         public DbSet<Transport> Transports { get; set; }
 
 
-        public DbSet<Competence> Competences { get; set; }*/
+       */
        /* public DbSet<Associ> Associs { get; set; }*/
-        public DbSet<Member> Members { get; set; }
+        public DbSet<Member> Members { get; set; } 
+        public DbSet<Competence> Competences { get; set; }
         public DbSet<Specialite> Specialites { get; set; }
        
         public DbSet<Contact> Contacts { get; set; }
@@ -30,7 +31,7 @@ namespace CaimanProject.DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            base.OnConfiguring(optionsBuilder.UseSqlServer(@"Data Source=192.168.70.96;Initial Catalog=DbCaiman;Integrated Security=True"));
+            base.OnConfiguring(optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-1MOS7C0;Initial Catalog=DbCaiman;Integrated Security=True"));
         }
 
         

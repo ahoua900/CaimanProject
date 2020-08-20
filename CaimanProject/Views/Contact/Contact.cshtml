@@ -56,17 +56,22 @@
                 <div class="row mt-5 mb-5">
                     <div class="col-12 text-center">
                         <ul class="pagination">
-                         @if (ViewBag.Page > ViewBag.MaxPage)
-                         {
-                            <li>
-                                <div>
-                                    @Html.ActionLink("Previous", "Contact", new { page = ViewBag.Page - 1 })
-                                </div>
-                            </li>
-                         }
-                            <li>
-                                <h4>@ViewBag.Page sur @ViewBag.MaxPage</h4>
-                            </li>
+                            @if (ViewBag.Page > ViewBag.MaxPage)
+                            {
+                                <li>
+                                    <div>
+                                        @Html.ActionLink("Previous", "Contact", new { page = ViewBag.Page - 1 })
+                                    </div>
+                                </li>
+                            }
+                            @if (ViewBag.MaxPage == 0)
+                            {
+                                <li>
+                                    <h4>@ViewBag.Page sur @ViewBag.MaxPage</h4>
+                                </li>
+                            }
+
+
                             @if (ViewBag.Page < ViewBag.MaxPage)
                             {
                                 <li>
@@ -75,8 +80,8 @@
                                     </div>
                                 </li>
                             }
-                                
-                           
+
+
                         </ul>
                     </div>
                 </div>

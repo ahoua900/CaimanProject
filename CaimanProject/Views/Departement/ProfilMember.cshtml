@@ -4,11 +4,21 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                       
-                        <div class="user-photo-card" style="border:2px solid @ViewData["message"]">
-                             <img src="/Fichier/@Html.DisplayFor(model => model.MemberImageName)" alt="username">
-                        </div>
-                        
+
+                        @if (Model.MemberIsArchived == true)
+                        {
+                            <div class="user-photo-card archive" style="border:2px solid @ViewData["message"]">
+                                <img src="/Fichier/@Html.DisplayFor(model => model.MemberImageName)" alt="username">
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="user-photo-card" style="border:2px solid @ViewData["message"]">
+                                <img src="/Fichier/@Html.DisplayFor(model => model.MemberImageName)" alt="username">
+                            </div>
+                        }
+
+
                         <div class="simple-card mt-5">
                             <div class="simple-card__content">
 
@@ -38,11 +48,11 @@
                                 <h2 class="mt-2">@Html.DisplayFor(model => model.MemberName) @Html.DisplayFor(model => model.MemberPnom)</h2>
                                 <div class="d-flex align-items-center">
                                     <span>Etudiant--</span>&nbsp;
-                                    <div class="round"></div>
-                                    <div class="round"></div>
-                                    <div class="round"></div>
-                                    <div class="round"></div>
-                                    <div class="round"></div>
+                                   @for (int i = 0; i < Model.MemberNote;)
+                                   {
+                                       <div class="round"></div>
+                                       i++;
+                                   }
                                 </div>
                                 <p>@Html.DisplayFor(model => model.MemberDescription)</p>
                                 <div class="d-flex align-items-center">
@@ -355,46 +365,15 @@
                                                 </div>
                                                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                                                     <div class="card-body">
-                                                        <form action="#" class="formular">
-                                                            <div class="form__group">
-                                                                <div class="form__radio-group">
-                                                                    <input type="radio" class="form__radio-input" id="one" name="membernote">
-                                                                    <label for="one" class="form__radio-label">
-                                                                        <span class="form__radio-button"></span>
-                                                                        1
-                                                                    </label>
-                                                                </div>
-
-                                                                <div class="form__radio-group">
-                                                                    <input type="radio" class="form__radio-input" id="two" name="membernote">
-                                                                    <label for="two" class="form__radio-label">
-                                                                        <span class="form__radio-button"></span>
-                                                                        2
-                                                                    </label>
-                                                                </div>
-                                                                <div class="form__radio-group">
-                                                                    <input type="radio" class="form__radio-input" id="three" name="membernote">
-                                                                    <label for="three" class="form__radio-label">
-                                                                        <span class="form__radio-button"></span>
-                                                                        3
-                                                                    </label>
-                                                                </div>
-
-                                                                <div class="form__radio-group">
-                                                                    <input type="radio" class="form__radio-input" id="four" name="membernote">
-                                                                    <label for="four" class="form__radio-label">
-                                                                        <span class="form__radio-button"></span>
-                                                                        4
-                                                                    </label>
-                                                                </div>
-
-                                                                <div class="form__radio-group">
-                                                                    <input type="radio" class="form__radio-input" id="five" name="membernote">
-                                                                    <label for="five" class="form__radio-label">
-                                                                        <span class="form__radio-button"></span>
-                                                                        5
-                                                                    </label>
-                                                                </div>
+                                                        <form action="#" class="formular" method="post">
+                                                            <div class="form-group col-md-6 mb-5">
+                                                                <select id="MemberNote" name="MemberNote" class="form-control">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
                                                             </div>
                                                             <button type="submit" class="btn-green">
                                                                 Enregistrer
@@ -474,7 +453,13 @@
                                                         </p>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <form action="#">
+                                                        <form action="#" method="post">
+                                                            <div class="form-group ">
+                                                                <select id="MemberIsArchived" name="MemberIsArchived" class="form-control">
+                                                                    <option value="true">Oui</option>
+                                                                    <option value="false">Non</option>
+                                                                </select>
+                                                            </div>
                                                             <button type="submit" class=" my-btn-red">Archiver</button>
                                                         </form>
                                                     </div>

@@ -1,8 +1,53 @@
-﻿
-@{
-    ViewBag.Title = "Archive";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Archive</h2>
-
+﻿@model CaimanProject.Models.Member
+<main class="main-content">
+    <div class="block">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="departmentDesc">
+                        <h1>Anciens membres</h1>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <ul class="dmembers-list">
+                        @foreach (var item in ViewBag.list)
+                        {
+                         <li>
+                            <a href="/Departement/ProfilMember/@item.MemberId">
+                                <div class="member-line position-relative">
+                                    <div class="photo-box ">
+                                        @if (item.MemberImageName == null)
+                                        {
+                                            <img src="/Content/img/user.png" alt="username">
+                                        }
+                                        else
+                                        {
+                                            <img src="/Fichier/@item.MemberImageName" alt="username">
+                                        }
+                                    </div>
+                                    <div class="member-line__info">
+                                        <h4>@item.MemberName @item.MemberPnom</h4>
+                                        <div class="d-flex align-items-center">
+                                            <span>Archivé le 23 Jan 2020 -</span>&nbsp;
+                                            @for (int i = 0; i < item.MemberNote;)
+                                            {
+                                                <div class="round"></div>
+                                                i++;
+                                            }
+                                        </div>
+                                    </div>
+                                        <div class="restore">
+                                            <span>Profil</span>
+                                        </div>
+                                </div>
+                            </a>
+                        </li>
+                        }
+                        
+                    </ul>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</main>

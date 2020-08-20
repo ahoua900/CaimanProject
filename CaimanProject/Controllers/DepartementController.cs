@@ -107,7 +107,7 @@ namespace CaimanProject.Controllers
                     db.SaveChanges();
                 }
             }
-            else
+            else if(member.MemberPnom != null)
             {
                 bd.MemberName = member.MemberName;
                 bd.MemberPnom = member.MemberPnom;
@@ -118,6 +118,19 @@ namespace CaimanProject.Controllers
                 bd.MemberCommune = member.MemberCommune;
                 bd.MemberPhone = member.MemberPhone;
                 bd.Transport = member.Transport;
+                db.Members.Update(bd);
+                db.SaveChanges();
+            }
+            else if(member.MemberPnom == null && member.MemberIsArchived == null)
+            {
+                bd.MemberNote = member.MemberNote;
+                db.Members.Update(bd);
+                db.SaveChanges();
+
+            }
+            else 
+            {
+                bd.MemberIsArchived = member.MemberIsArchived;
                 db.Members.Update(bd);
                 db.SaveChanges();
             }

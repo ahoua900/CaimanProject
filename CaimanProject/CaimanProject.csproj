@@ -279,9 +279,17 @@
     <Compile Include="Migrations\20200819164213_colonnemembr.designer.cs">
       <DependentUpon>20200819164213_colonnemembr.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20200819172712_boole.cs" />
-    <Compile Include="Migrations\20200819172712_boole.designer.cs">
-      <DependentUpon>20200819172712_boole.cs</DependentUpon>
+    <Compile Include="Migrations\20200820125514_ajoutcomptence.cs" />
+    <Compile Include="Migrations\20200820125514_ajoutcomptence.designer.cs">
+      <DependentUpon>20200820125514_ajoutcomptence.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200820142419_updates.cs" />
+    <Compile Include="Migrations\20200820142419_updates.designer.cs">
+      <DependentUpon>20200820142419_updates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200820142536_update.cs" />
+    <Compile Include="Migrations\20200820142536_update.designer.cs">
+      <DependentUpon>20200820142536_update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DbCaimanContextModelSnapshot.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
