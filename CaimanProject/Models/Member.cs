@@ -35,6 +35,7 @@ namespace CaimanProject.Models
         public bool? MemberIsArchived { get; set; }
 
         public string MemberStatus { get; set; }
+        public bool IsActif { get; set; }
 
         public string MemberCommune { get; set; }
 

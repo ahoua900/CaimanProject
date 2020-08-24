@@ -16,7 +16,7 @@
                         <a href="/Home/VueProjet/@item.ProjetId">
                             <div class="simple-card">
                                 <div class="simple-card__content">
-                                    <span>En cours depuis le @item.ProjetDateDebut.ToString("dd MMM yyyy")</span>
+                                    <span>Terminé le @item.ProjetDateFin.ToString("dd MMM yyyy")</span>
                                     <h2 class="mt-2">@item.ProjetName</h2>
                                     <p>
                                         @item.ProjetDescription
@@ -33,7 +33,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                               
+
                             </div>
                             <div class="simple-card__progress mt-4 text-center justify-content-center">
                                 <div>
@@ -44,6 +44,34 @@
                         </a>
                     </div>
                 }
+            </div>
+            <div class="row mt-5 mb-5">
+                <div class="col-12 text-center">
+                    <ul class="pagination">
+                        @if (ViewBag.Page >= ViewBag.MaxPage)
+                        {
+                            <li>
+                                <div>
+                                    @Html.ActionLink("Previous", "FinProjet", new { page = ViewBag.Page - 1 })
+                                </div>
+                            </li>
+                        }
+                            <li>
+                                <h4>@ViewBag.Page sur @ViewBag.MaxPage</h4>
+                            </li>
+
+                        @if (ViewBag.Page < ViewBag.MaxPage)
+                        {
+                            <li>
+                                <div>
+                                    @Html.ActionLink("Next", "FinProjet", new { page = ViewBag.Page + 1 })
+                                </div>
+                            </li>
+                        }
+
+
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

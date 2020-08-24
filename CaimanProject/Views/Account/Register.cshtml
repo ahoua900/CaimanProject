@@ -3,39 +3,60 @@
     ViewBag.Title = "S'inscrire";
 }
 
-<h2>@ViewBag.Title.</h2>
+<div class="loginpage">
+    <div class="login-card">
+        <div class="login-card__img-box">
+            &nbsp;
+        </div>
+        <div class="login-card__content">
+            <h1>Créer un nouveau compte</h1>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Créez un nouveau compte.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="S'inscrire" />
-        </div>
-    </div>
-}
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.AdminName, new { @class = "form-control", @placeholder = "Nom", @style = "font-size:1.6rem; padding:1.5rem; height:5rem" })
+                    @Html.ValidationMessageFor(m => m.AdminName, "", new { @class = "text-danger" })
+                </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.AdminPnom, new { @class = "form-control", @placeholder = "Prénoms", @style = "font-size:1.6rem; padding:1.5rem; height:5rem" })
+                    @Html.ValidationMessageFor(m => m.AdminPnom, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.Sexe, new { @class = "form-control", @placeholder = "Sexe", @style = "font-size:1.6rem; padding:1.5rem; height:5rem" })
+                    @Html.ValidationMessageFor(m => m.Sexe, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email", @style = "font-size:1.6rem; padding:1.5rem; height:5rem" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @placeholder = "Téléphone", @style = "font-size:1.6rem; padding:1.5rem; height:5rem" })
+                    @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Mot de Passe", @style = "font-size:1.6rem; padding:1.5rem; height:5rem" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password", @style = "font-size:1.6rem; padding:1.5rem; height:5rem" })
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="S'Incrire" class="btn-green btn-sm" />
+                </div>
+
+                @Html.AntiForgeryToken();
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            }
+
+            <small>&copy; Caiman admin -all rights reserved</small>
+        </div>
+    </div>
+</div>

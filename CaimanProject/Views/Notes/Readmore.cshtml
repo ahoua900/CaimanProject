@@ -1,0 +1,42 @@
+﻿@model CaimanProject.Models.NoteP
+<main class="main-content">
+    <div class="block">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb bg-white">
+                            <li class="breadcrumb-item"><a href="/Home/VueProjet/@Model.ProjetNote">Projet</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Nouvelle note</li>
+                        </ol>
+                    </nav>
+                </div>
+                
+            </div>
+            <div class="row">
+              
+                    <div class="col-12">
+                        <h2 class="mb-5">Note du @Model.NotePDate.ToString("dd MMM yyyy")</h2>
+                        <div class="simple-card">
+                            <div class="simple-card__content">
+                                <div class="unlimited">
+                                    <p>
+                                        @Model.NotePDescription
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/Notes/AllNotes/@Model.ProjetNote">
+                            <button class="btn-green">Terminer la lecture</button>
+                        </a>
+                    </div>
+               
+                
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+</main>

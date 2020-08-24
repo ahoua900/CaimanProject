@@ -83,10 +83,10 @@
                                         </div>
                                     </a>
                                     &nbsp; &nbsp;
-                                    @if(@Html.DisplayFor(model => model.MemberIsArchived) != null)
+                                    @if(Model.MemberIsArchived == true)
                                     {
-                                        <form action="#">
-                                            <button type="submit" class="my-btn-red">
+                                        <form action="#" method="post">
+                                            <button type="submit" value="false" class="my-btn-red" name="MemberIsArchived">
                                                 Restaurer
                                             </button>
                                         </form>
@@ -436,7 +436,11 @@
                                     </div>
 
                                     <div class="col-12 mt-5">
+                                        @if (Model.MemberIsArchived == false)
+                                        {
                                         <button class="my-btn-red" data-toggle="modal" data-target="#exampleModalCenter">Archiver le membre</button>
+                                        }
+                                        
                                         <!-- Modal -->
                                         <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -454,13 +458,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <form action="#" method="post">
-                                                            <div class="form-group ">
-                                                                <select id="MemberIsArchived" name="MemberIsArchived" class="form-control">
-                                                                    <option value="true">Oui</option>
-                                                                    <option value="false">Non</option>
-                                                                </select>
-                                                            </div>
-                                                            <button type="submit" class=" my-btn-red">Archiver</button>
+                                                            <button type="submit" value="true" class=" my-btn-red" name="MemberIsArchived">Archiver</button>
                                                         </form>
                                                     </div>
                                                 </div>

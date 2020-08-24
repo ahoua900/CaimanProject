@@ -23,7 +23,7 @@ namespace CaimanProject.DAL
         public DbSet<Member> Members { get; set; } 
         public DbSet<Competence> Competences { get; set; }
         public DbSet<Specialite> Specialites { get; set; }
-       
+        public DbSet<NoteP> NotePs { get; set; }
         public DbSet<Contact> Contacts { get; set; }
        
         public DbSet<Projet> Projets { get; set; }

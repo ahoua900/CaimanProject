@@ -4,14 +4,16 @@ using CaimanProject.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CaimanProject.Migrations
 {
     [DbContext(typeof(DbCaimanContext))]
-    partial class DbCaimanContextModelSnapshot : ModelSnapshot
+    [Migration("20200824112348_ajoutactif")]
+    partial class ajoutactif
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,27 +136,6 @@ namespace CaimanProject.Migrations
                     b.HasKey("MemberId");
 
                     b.ToTable("Members");
-                });
-
-            modelBuilder.Entity("CaimanProject.Models.NoteP", b =>
-                {
-                    b.Property<int>("NotePId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("NotePDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NotePDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProjetNote")
-                        .HasColumnType("int");
-
-                    b.HasKey("NotePId");
-
-                    b.ToTable("NotePs");
                 });
 
             modelBuilder.Entity("CaimanProject.Models.Projet", b =>

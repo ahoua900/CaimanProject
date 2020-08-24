@@ -15,6 +15,7 @@ namespace CaimanProject.Controllers
         // GET: Departement
         public ActionResult Departement()
         {
+            var bd = db.Specialites.ToList();
             ViewBag.Spe = db.Specialites.ToList();
             return View();
         }
@@ -52,6 +53,8 @@ namespace CaimanProject.Controllers
         {
             var bd = db.Specialites.Find(id);
             ViewBag.Membern = db.Members.Where(s => s.Specialite == bd.SpecialiteName);
+            ViewBag.Respo = db.Members.Where(s => s.MemberStatus == "Chef de projet" && s.Specialite == bd.SpecialiteName);
+            ViewBag.Adj = db.Members.Where(s => s.MemberStatus != "Chef de projet" && s.Specialite == bd.SpecialiteName);
             return View(bd);
         }
 
@@ -60,13 +63,21 @@ namespace CaimanProject.Controllers
         public ActionResult VueDepartement(Member member, int id)
         {
             var bd = db.Members.Find(id);
-            member.MemberStatus = "Chef de projet";
-           /* if (member.MemberStatus == null)
+            if (member.IsActif)
             {
-                member.MemberStatus = "Chef de projet";
-            }*/
-            bd.MemberStatus = member.MemberStatus;
-            db.Members.Update(bd);
+                if (member.MemberStatus != "Chef de projet")
+                {
+                    member.MemberStatus = "Chef de projet";
+                }
+                else
+                {
+                    member.MemberStatus = "Adjoint";
+                }
+                bd.MemberStatus = member.MemberStatus;
+                db.Members.Update(bd);
+                db.SaveChanges();
+            }
+            
             return RedirectToAction("VueDepartement");
         }
 
@@ -134,6 +145,9 @@ namespace CaimanProject.Controllers
                 db.Members.Update(bd);
                 db.SaveChanges();
             }
+
+
+           
             return RedirectToAction("ProfilMember");
         }
     }

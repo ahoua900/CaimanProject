@@ -24,7 +24,7 @@
                                     </button>
                                 </a>
                                 &nbsp;&nbsp;
-                                <a href="finishProject.html">
+                                <a href="/Home/FinishProjet/@Model.Projets.ProjetId">
                                     <button class="btn-green">
                                         projet terminer
                                     </button>
@@ -78,33 +78,33 @@
                     <div class="simple-card">
                         <div class="simple-card__content">
                             <ol class="onote-list mb-5">
-                                <li>
-                                <div class="onote">
-                                    <span>12 Jan 2020</span>
-                                    <p class="pgh">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Recusandae a sint itaque reiciendis repudiandae delectus
-                                        accusamus sequi dolorum sed, corporis, commodi nulla!
-                                        Reprehenderit dolores provident perspiciatis vero necessitatibus
-                                        debitis cumque.
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Recusandae a sint itaque reiciendis repudiandae delectus
-                                        accusamus sequi dolorum sed, corporis, commodi nulla!
-                                        Reprehenderit dolores provident perspiciatis vero necessitatibus
-                                        debitis cumque.
-                                    </p>
-                                    <a href="readnote.html" class="link">Lire la suite</a>
-                                </div>
-                                </li>
+                                @{ var count = 0;}
+                                @foreach (var item in Model.notePs)
+                                {
+                                    if (count < 1)
+                                    {
+                                        <li>
+                                            <div class="onote">
+                                                <span>@item.NotePDate.ToString("dd MMM yyyy")</span>
+                                                <p class="pgh">
+                                                    @item.NotePDescription
+                                                </p>
+                                                <a href="/Notes/Readmore/@Model.Projets.ProjetId" class="link">Lire la suite</a>
+                                            </div>
+                                        </li>
+                                    }
+                                    count++;
+                                }
+
                             </ol>
                             <div class="d-flex align-items-center">
-                                <a href="notes.html" target="_blank">
+                                <a href="/Notes/AllNotes/@Model.Projets.ProjetId">
                                     <button class="img-btn">
                                         <span>Plus</span>
                                     </button>
                                 </a>
                                 &nbsp;&nbsp;
-                                <a href="newnote.html">
+                                <a href="/Notes/AddNotes/@Model.Projets.ProjetId">
                                     <button class="btn-green">
                                         Nouvelle note
                                     </button>
@@ -136,7 +136,7 @@
                                 <div class="modal-body">
                                     <form action="#" class="formular" method="post">
                                         <div class="form-group">
-                                            <input type="number" class="form-control" id="ProjetProgressBar" name="ProjetProgressBar" placeholder="progression du projet">
+                                            <input type="number" class="form-control" id="ProjetProgressBar" name="ProjetProgressBar" placeholder="progression du projet" max="99" min="0" value="@Model.Projets.ProjetProgressBar">
                                         </div>
                                         <button type="submit" class="btn-green">valider</button>
                                     </form>
@@ -186,10 +186,6 @@
                                     </div>
                                 </li>
                             }
-                        
-
-
-
                     </ul>
 
                     <br>

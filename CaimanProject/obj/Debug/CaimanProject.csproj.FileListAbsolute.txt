@@ -569,8 +569,8 @@ C:\Users\imac 22\source\repos\CaimanProject\CaimanProject\bin\fr\Microsoft.Owin.
 C:\Users\imac 22\source\repos\CaimanProject\CaimanProject\bin\fr\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\imac 22\source\repos\CaimanProject\CaimanProject\bin\fr\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\imac 22\source\repos\CaimanProject\CaimanProject\bin\fr\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\Users\imac 22\source\repos\CaimanProject\CaimanProject\obj\Debug\CaimanProject.csprojAssemblyReference.cache
 C:\Users\imac 22\source\repos\CaimanProject\CaimanProject\obj\Debug\CaimanProject.csproj.CoreCompileInputs.cache
 C:\Users\imac 22\source\repos\CaimanProject\CaimanProject\obj\Debug\CaimanProject.csproj.CopyComplete
 C:\Users\imac 22\source\repos\CaimanProject\CaimanProject\obj\Debug\CaimanProject.dll
 C:\Users\imac 22\source\repos\CaimanProject\CaimanProject\obj\Debug\CaimanProject.pdb
+C:\Users\imac 22\source\repos\CaimanProject\CaimanProject\obj\Debug\CaimanProject.csprojAssemblyReference.cache

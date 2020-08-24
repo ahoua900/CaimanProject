@@ -18,16 +18,14 @@
                 </div>
                 <div class="row">
                     <div class="col-12 mb-5">
-                       
-                            <button>@Html.ActionLink("Nouveau Contact", "NewContact", null, new { @class = "btn-green" })</button>
-                     
+
+                        <button>@Html.ActionLink("Nouveau Contact", "NewContact", null, new { @class = "btn-green" })</button>
+
                     </div>
                     @foreach (var item in ViewBag.Contact)
                     {
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-
                             <div class="simple-card">
-
                                 <div class="simple-card__content">
                                     <h2 class="mt-2">@item.ContactName @item.ContactPname</h2>
                                     <h3>@item.ContactFonction</h3>
@@ -44,15 +42,16 @@
                                             <img src="~/Content/icons/globe.svg" alt="website">
                                             <span>@item.ContactSite</span>
                                         </li>
-                                    </ol>                                  
-                                        <button class="btn-tlight">@Html.ActionLink("Modifier", "ModifContact", new { id = item.ContactId})</button>
+                                    </ol>
+                                    <a href="/Contact/ModifContact/@item.ContactId">
+                                        <button class="btn-tlight">Modifier</button>
+                                    </a>
                                 </div>
                             </div>
-
                         </div>
-                    }
+                     }
 
-                </div>
+                    </div>
                 <div class="row mt-5 mb-5">
                     <div class="col-12 text-center">
                         <ul class="pagination">

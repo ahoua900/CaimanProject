@@ -267,6 +267,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberCtController.cs" />
+    <Compile Include="Controllers\NotesController.cs" />
     <Compile Include="DAL\DbCaimanContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -291,6 +292,22 @@
     <Compile Include="Migrations\20200820142536_update.designer.cs">
       <DependentUpon>20200820142536_update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200820164058_AddConnexion.cs" />
+    <Compile Include="Migrations\20200820164058_AddConnexion.designer.cs">
+      <DependentUpon>20200820164058_AddConnexion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200820164804_AddAuth.cs" />
+    <Compile Include="Migrations\20200820164804_AddAuth.designer.cs">
+      <DependentUpon>20200820164804_AddAuth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200824112348_ajoutactif.cs" />
+    <Compile Include="Migrations\20200824112348_ajoutactif.designer.cs">
+      <DependentUpon>20200824112348_ajoutactif.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200824153339_ajoutdenotes.cs" />
+    <Compile Include="Migrations\20200824153339_ajoutdenotes.designer.cs">
+      <DependentUpon>20200824153339_ajoutdenotes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DbCaimanContextModelSnapshot.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Associ.cs" />
@@ -299,6 +316,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\ModeNote.cs" />
     <Compile Include="Models\NoteP.cs" />
     <Compile Include="Models\Projet.cs" />
     <Compile Include="Models\SocialNetwork.cs" />
@@ -306,6 +324,7 @@
     <Compile Include="Models\Transport.cs" />
     <Compile Include="Models\ViewM.cs" />
     <Compile Include="Models\ViewModel.cs" />
+    <Compile Include="Models\VueNote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -399,6 +418,10 @@
     <Content Include="Views\Home\VueProjet.cshtml" />
     <Content Include="Views\Home\Directive.cshtml" />
     <Content Include="Views\Home\FinProjet.cshtml" />
+    <Content Include="Views\Home\FinishProjet.cshtml" />
+    <Content Include="Views\Notes\AddNotes.cshtml" />
+    <Content Include="Views\Notes\AllNotes.cshtml" />
+    <Content Include="Views\Notes\Readmore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
