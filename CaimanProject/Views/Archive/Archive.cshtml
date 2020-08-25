@@ -28,7 +28,7 @@
                                     <div class="member-line__info">
                                         <h4>@item.MemberName @item.MemberPnom</h4>
                                         <div class="d-flex align-items-center">
-                                            <span>Archivé le 23 Jan 2020 -</span>&nbsp;
+                                            <span>Archivé le @DateTime.Now.ToString("dd MMM yyyy") -</span>&nbsp;
                                             @for (int i = 0; i < item.MemberNote;)
                                             {
                                                 <div class="round"></div>

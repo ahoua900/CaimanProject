@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Security.Permissions;
 
 namespace CaimanProject.Models
 {
@@ -71,31 +70,10 @@ namespace CaimanProject.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(30)]
-        [Display(Name ="Nom")]
-        public string AdminName { get; set; }
-
-        [Required]
-        [StringLength(30)]
-        [Display(Name = "Prénoms")]
-        public string AdminPnom { get; set; }
-
-        [Required(ErrorMessage ="Veuillez entrer votre numéro")]
-        [Display(Name ="Téléphone")]
-        [RegularExpression(@"((\+)?[ ]?(225))?[ ]?[02456789]{1}[\d]{1}([ _.-]?[\d]{2}){3}$", ErrorMessage ="Numéro Invalide")]
-        public string PhoneNumber { get; set; }
-
-        
-        [Display(Name = "Sexe")]
-        public string Sexe { get; set; }
-
-
-        [Required]
         [StringLength(100, ErrorMessage = "La chaîne {0} doit comporter au moins {2} caractères.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Mot de passe")]
         public string Password { get; set; }
-
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirmer le mot de passe ")]

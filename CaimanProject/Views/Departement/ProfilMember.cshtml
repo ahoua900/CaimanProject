@@ -271,11 +271,19 @@
                                                                 <div class="form-group col-md-6 mb-5">
                                                                     <label for="trsp">Transport utilisé</label>
                                                                     <select id="trsp" class="form-control" name="Transport">
-                                                                        <option value="@Html.DisplayFor(model => model.Transport)"></option>
-                                                                        <option selected>Bus</option>
+                                                                        <option value="@Html.DisplayFor(model => model.Transport)">@Html.DisplayFor(model => model.Transport)</option>
+                                                                        <option >Bus</option>
                                                                         <option>Taxi communal</option>
                                                                         <option>Véhicule personnel</option>
                                                                         <option>Compteur</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group col-md-6 mb-5">
+                                                                    <label for="trsp">Mon Statut</label>
+                                                                    <select id="trsp" class="form-control" name="MemberStatus">
+                                                                        <option value="@Html.DisplayFor(model => model.MemberStatus)">@Html.DisplayFor(model => model.MemberStatus)</option>
+                                                                        <option value="Membre simple">Membre simple</option>
+                                                                        <option value="Adjoint">Adjoint</option>
                                                                     </select>
                                                                 </div>
                                                             </div>

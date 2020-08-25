@@ -74,12 +74,15 @@
 
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-6">
-                    <h2 class="mb-5">notes _ <small>24 notes</small></h2>
+                    @{ var count = 0;
+                        var cot = Model.notePs.Count();}
+                    <h2 class="mb-5">notes _ <small>@cot notes</small></h2>
                     <div class="simple-card">
                         <div class="simple-card__content">
                             <ol class="onote-list mb-5">
-                                @{ var count = 0;}
-                                @foreach (var item in Model.notePs)
+
+
+                                @foreach (var item in Model.notePs.OrderByDescending(s => s.NotePId))
                                 {
                                     if (count < 1)
                                     {

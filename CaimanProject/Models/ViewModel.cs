@@ -10,6 +10,6 @@ namespace CaimanProject.Models
         public List<Specialite> Specialites { get; set; }
         public List<Member> Members { get; set; }
         public List<Projet> Projets { get; set; }
-        
+
     }
 }

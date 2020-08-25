@@ -11,30 +11,29 @@ using System.Web.Mvc;
 
 namespace CaimanProject.Controllers
 { 
-    [Authorize]
+    /*[Authorize]*/
     public class HomeController : Controller
     {
         DbCaimanContext db = new DbCaimanContext();
         public ActionResult Index()
         {
             var spe = GetSpecialite();
-            var men = GetMembe();
+          
             var pro = Getprojet();
             var mode = new ViewModel();
             mode.Specialites = spe;
-            mode.Members = men;
+           /* mode.Membre = men;*/
             mode.Projets = pro;
-
             return View(mode);
            
         }
+
+       
+
         public ActionResult VueProjet(int id)
         {
             var not = GetNote(id);
             var pros = GetProd(id);
-
-            var bd = db.Associs.Where(x => x.ProjetId == id);
-            
             var ne = new ViewM();
             ne.Projets = pros;
             ne.notePs = not;
@@ -81,7 +80,7 @@ namespace CaimanProject.Controllers
     }
 
     private List<Member> GetMembe()
-    {
+    {          
         return db.Members.ToList();
     }
 

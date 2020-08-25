@@ -52,9 +52,9 @@ namespace CaimanProject.Controllers
         public ActionResult VueDepartement(int id)
         {
             var bd = db.Specialites.Find(id);
-            ViewBag.Membern = db.Members.Where(s => s.Specialite == bd.SpecialiteName);
-            ViewBag.Respo = db.Members.Where(s => s.MemberStatus == "Chef de projet" && s.Specialite == bd.SpecialiteName);
-            ViewBag.Adj = db.Members.Where(s => s.MemberStatus != "Chef de projet" && s.Specialite == bd.SpecialiteName);
+            ViewBag.Membern = db.Members.Where(s => s.Specialite == bd.SpecialiteName && s.MemberIsArchived != true);
+            ViewBag.Respo = db.Members.Where(s => s.MemberStatus == "Chef de groupe" && s.Specialite == bd.SpecialiteName).OrderByDescending(x=> x.MemberId);
+            ViewBag.Adj = db.Members.Where(s => s.MemberStatus != "Chef de groupe" && s.Specialite == bd.SpecialiteName);
             return View(bd);
         }
 
@@ -62,22 +62,33 @@ namespace CaimanProject.Controllers
         [HttpPost]
         public ActionResult VueDepartement(Member member, int id)
         {
-            var bd = db.Members.Find(id);
-            if (member.IsActif)
-            {
-                if (member.MemberStatus != "Chef de projet")
-                {
-                    member.MemberStatus = "Chef de projet";
-                }
-                else
-                {
-                    member.MemberStatus = "Adjoint";
-                }
-                bd.MemberStatus = member.MemberStatus;
-                db.Members.Update(bd);
-                db.SaveChanges();
-            }
             
+            var bd = from s in db.Members select s;
+            foreach (var item in bd)
+            {
+                //fait le verification s'ils sont identiques
+                if (member.MemberId == item.MemberId)
+                {
+                    if (member.MemberStatus == "Chef de groupe" && member.MemberStatus == "Membre simple")
+                    {
+                         item.MemberStatus = "Adjoint";
+                    }
+                    else if (member.MemberStatus != "Chef de groupe" && member.MemberStatus != "Membre simple")
+                    {
+                        item.MemberStatus = "Chef de groupe";
+                    }
+                    else
+                    {
+                        item.MemberStatus = "Adjoint";
+                    }
+                    member = item;
+                    
+                }
+               
+            }
+            db.Members.Update(member);
+            db.SaveChanges();
+
             return RedirectToAction("VueDepartement");
         }
 
@@ -132,6 +143,7 @@ namespace CaimanProject.Controllers
                 bd.MemberCommune = member.MemberCommune;
                 bd.MemberPhone = member.MemberPhone;
                 bd.Transport = member.Transport;
+                bd.MemberStatus = member.MemberStatus;
                 db.Members.Update(bd);
                 db.SaveChanges();
             }

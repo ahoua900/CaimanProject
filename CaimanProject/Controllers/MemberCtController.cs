@@ -37,7 +37,7 @@ namespace CaimanProject.Controllers
         [HttpPost]
         public ActionResult AddMember(Member member)
         {
-            
+            member.MemberStatus = "Membre simple";
                 db.Members.Add(member);
                 db.SaveChanges();
      
