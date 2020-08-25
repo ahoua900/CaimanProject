@@ -26,10 +26,14 @@
 
                                 <div class="row mt-5">
                                     <div class="col-12">
+                                        @foreach (var item in ViewBag.social)
+                                        {
                                         <div class="mb-4 brb">
-                                            <h5>LinkedIn:</h5>
-                                            <h3><a href="#" target="_blank">https://www.instagram.com/</a></h3>
+                                            <h5>@item.NetworkName:</h5>
+                                            <h3><a href="@item.NetworkLink" target="_blank">@item.NetworkLink</a></h3>
                                         </div>
+                                        }
+                                        
                                     </div>
                                 </div>
 
@@ -116,7 +120,7 @@
                                         </div>
                                         <div class="mb-4 brb">
                                             <h5>Date de naissance:</h5>
-                                            <h3>@Html.DisplayFor(model => model.MemberNaissance)</h3>
+                                            <h3>@Model.MemberNaissance.ToString("dd MMMM yyyy")</h3>
                                         </div>
                                         <div class="mb-4">
                                             <h5>Lieu de naissance:</h5>
@@ -165,30 +169,15 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @{ var ite = 1;}
+                                                @foreach (var item in ViewBag.mem)
+                                                {
                                                 <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>HTML 5</td>
+                                                    <th scope="row">@ite</th>
+                                                    <td>@item.CompetenceName</td>
                                                 </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>CSS 3</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Vue JS</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">4</th>
-                                                    <td>Bootstrap 5</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">5</th>
-                                                    <td>Sass</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">6</th>
-                                                    <td>Version control</td>
-                                                </tr>
+                                                    ite++;
+                                                }
                                             </tbody>
                                         </table>
                                     </div>
@@ -256,7 +245,7 @@
                                                             </div>
                                                             <div class="form-group mb-5">
                                                                 <label for="exampleFormControlTextarea1">Description</label>
-                                                                <textarea class="form-control" name="MemberDescription"  rows="5"></textarea>
+                                                                <textarea class="form-control" name="MemberDescription"  rows="5">@Model.MemberDescription</textarea>
                                                             </div>
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-6 mb-5">
@@ -305,11 +294,11 @@
                                                 </div>
                                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                                     <div class="card-body">
-                                                        <form action="#" class="formular">
+                                                        <form action="#" class="formular" method="post">
                                                             <div class="form-row">
                                                                 <div class="form-group col-12 mb-5">
                                                                     <label for="comp">Compétence</label>
-                                                                    <input type="text" class="form-control" id="comp">
+                                                                    <input type="text" class="form-control" id="comp" name="CompetenceName">
                                                                 </div>
                                                             </div>
                                                             <button type="submit" class="btn-green">
@@ -317,38 +306,20 @@
                                                             </button>
                                                         </form>
                                                         <hr class="mt-5 mb-5">
-                                                        <form action="#" class="formular">
+                                                        <form action="#" class="formular" method="post">
                                                             <div class="form__group">
+
+                                                                @foreach (var item in ViewBag.mem)
+                                                                {
                                                                 <div class="form__radio-group">
                                                                     <input type="checkbox" class="form__radio-input" id="small" name="size">
                                                                     <label for="small" class="form__radio-label">
                                                                         <span class="form__radio-button"></span>
-                                                                        bootstrap
+                                                                        @item.CompetenceName
                                                                     </label>
                                                                 </div>
-
-                                                                <div class="form__radio-group">
-                                                                    <input type="checkbox" class="form__radio-input" id="large" name="size">
-                                                                    <label for="large" class="form__radio-label">
-                                                                        <span class="form__radio-button"></span>
-                                                                        Vue js
-                                                                    </label>
-                                                                </div>
-                                                                <div class="form__radio-group">
-                                                                    <input type="checkbox" class="form__radio-input" id="azdazfc" name="size">
-                                                                    <label for="azdazfc" class="form__radio-label">
-                                                                        <span class="form__radio-button"></span>
-                                                                        Kotlin
-                                                                    </label>
-                                                                </div>
-
-                                                                <div class="form__radio-group">
-                                                                    <input type="checkbox" class="form__radio-input" id="ergteger" name="size">
-                                                                    <label for="ergteger" class="form__radio-label">
-                                                                        <span class="form__radio-button"></span>
-                                                                        Django
-                                                                    </label>
-                                                                </div>
+                                                                }
+                                                                
                                                             </div>
                                                             <button type="submit" class="btn-green">
                                                                 Supprimer
@@ -390,15 +361,15 @@
                                                 </div>
                                                 <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
                                                     <div class="card-body">
-                                                        <form action="#" class="formular">
+                                                        <form action="#" class="formular" method="post">
                                                             <div class="form-row">
                                                                 <div class="form-group col-md-6 mb-5">
                                                                     <label for="res">Réseau</label>
-                                                                    <input type="text" class="form-control" id="res">
+                                                                    <input type="text" class="form-control" id="res" name="NetworkName">
                                                                 </div>
                                                                 <div class="form-group col-md-6 mb-5">
                                                                     <label for="link">Lien</label>
-                                                                    <input type="text" class="form-control" id="link">
+                                                                    <input type="text" class="form-control" id="link" name="NetworkLink">
                                                                 </div>
                                                             </div>
                                                             <button type="submit" class="btn-green">
@@ -436,7 +407,7 @@
                                     </div>
 
                                     <div class="col-12 mt-5">
-                                        @if (Model.MemberIsArchived == false)
+                                        @if (Model.MemberIsArchived == false || Model.MemberIsArchived == null)
                                         {
                                         <button class="my-btn-red" data-toggle="modal" data-target="#exampleModalCenter">Archiver le membre</button>
                                         }

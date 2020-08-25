@@ -89,7 +89,7 @@
                                                 <p class="pgh">
                                                     @item.NotePDescription
                                                 </p>
-                                                <a href="/Notes/Readmore/@Model.Projets.ProjetId" class="link">Lire la suite</a>
+                                                <a href="/Notes/Readmore/@item.NotePId" class="link">Lire la suite</a>
                                             </div>
                                         </li>
                                     }
@@ -172,7 +172,7 @@
                                             <span class="form__radio-button"></span>
                                             <div class="member-line">
                                                 <div class="photo-box " style="border:2px solid Purple">
-                                                    <img src="/Fichier/@item.MemberImageName" alt="username">
+                                                    <img src="/Fichier/@item.MemberImageName" >
                                                 </div>
                                                 <div class="member-line__info">
                                                     <h4>@item.MemberName @item.MemberPnom</h4>

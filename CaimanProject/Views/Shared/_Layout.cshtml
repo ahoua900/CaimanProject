@@ -12,78 +12,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="top-bar">
-        <div class="block">
-            <div class="container-fluid">
-                <h3>Kay Donald admin</h3>
-            </div>
-        </div>
-    </div>
-    <nav class="navigation-bar">
-        <div class="block">
-            <div class="container-fluid position-relative">
-                <div class="nav-content">
 
-                    <a href="@Url.Action("Index", "Home")">
-                        <img src="~/Content/icons/crocodile.svg" alt="logo caiman" class="img-logo">
-                    </a>
-                    <ul class="main-menu" id="menu-list">
-                        <li>
-                            @Html.ActionLink("Accueil", "Index", "Home")
-                            <img src="~/Content/icons/arrowb.svg" alt="arrow">
-                        </li>
-                        <li>
-                            @Html.ActionLink("Departements", "Departement", "Departement")
-                            <img src="~/Content/icons/arrowb.svg" alt="arrow">
-                        </li>
-                        <li>
-                            <div class="dropdown">
-                                <button class="dropbtn">Archives</button>
-                                <div class="dropdown-content">
-                                    <a href="/Home/FinProjet">Projets terminés <img src="~/Content/icons/arrowb.svg" alt="arrow"></a>
-                                    <a href="/Archive/Archive">Anciens membres <img src="~/Content/icons/arrowb.svg" alt="arrow"></a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            @Html.ActionLink("Contact", "Contact", "Contact")
-                            <img src="~/Content/icons/arrowb.svg" alt="arrow">
-                        </li>
-                    </ul>
-                </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.Partial("~/Shared/NavBarPartial/_NavBar")
+    }
 
-                <ul class="nav-actions">
-                    <li>
-                        <a href="/MemberCt/AddMember">
-                            <div>
-                                <img src="~/Content/icons/adduser.svg" alt="add">
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/Home/AddProject">
-                            <div>
-                                <img src="~/Content/icons/rocket.svg" alt="project">
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="admprofil.html">
-                            <div>
-                                <img src="~/Content/img/user.png" alt="username" class="admin">
-                            </div>
-                        </a>
-                    </li>
-                    <li class="respm">
-                        <div id="resmenu">
-                            <img src="~/Content/icons/menu.svg" alt="">
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-   
     @RenderBody()
 
     <script src="~/Scripts/js/jquery.min.js"></script>

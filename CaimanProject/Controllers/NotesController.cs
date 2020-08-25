@@ -24,7 +24,7 @@ namespace CaimanProject.Controllers
 
         private List<NoteP> GetNote()
         {
-            return db.NotePs.ToList();
+            return db.NotePs.OrderByDescending(s => s.NotePId).ToList();
         }
 
         private Projet GetProjet(int id)

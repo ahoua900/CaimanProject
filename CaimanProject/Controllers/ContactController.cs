@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CaimanProject.Controllers
 {
+   
     public class ContactController : Controller
     {
         DbCaimanContext db = new DbCaimanContext();

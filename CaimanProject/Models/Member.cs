@@ -36,6 +36,7 @@ namespace CaimanProject.Models
 
         public string MemberStatus { get; set; }
         public bool IsActif { get; set; }
+        public bool IsSelecte { get; set; }
 
         public string MemberCommune { get; set; }
 

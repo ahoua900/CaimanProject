@@ -10,8 +10,8 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace CaimanProject.Controllers
-{
-    
+{ 
+    [Authorize]
     public class HomeController : Controller
     {
         DbCaimanContext db = new DbCaimanContext();
@@ -24,6 +24,7 @@ namespace CaimanProject.Controllers
             mode.Specialites = spe;
             mode.Members = men;
             mode.Projets = pro;
+
             return View(mode);
            
         }
@@ -31,7 +32,9 @@ namespace CaimanProject.Controllers
         {
             var not = GetNote(id);
             var pros = GetProd(id);
-            var bd = db.Projets.Find(id);
+
+            var bd = db.Associs.Where(x => x.ProjetId == id);
+            
             var ne = new ViewM();
             ne.Projets = pros;
             ne.notePs = not;
@@ -64,7 +67,7 @@ namespace CaimanProject.Controllers
     private List<Projet> Getprojet()
     {
         var bd = db.Projets.Where(s => s.IsArchieved == false || s.ProjetProgressBar < 100);
-        return bd.ToList();
+        return bd.OrderByDescending(s => s.ProjetId).ToList();
     }
 
     public ActionResult AddProject()
@@ -100,9 +103,23 @@ namespace CaimanProject.Controllers
                 file.SaveAs(path);
                 projet.ProjetCahierCharge = fileName;
                 projet.ProjetDateDebut = DateTime.Now;
-                    db.Projets.Add(projet);
-                    db.SaveChanges();
+                db.Projets.Add(projet);
+                db.SaveChanges();
+                    //Boucle et recupere les Id des membres
+                    var bd = from s in db.Members select s;
+                        foreach (var item in bd)
+                        {
+                        //fait le verification s'ils sont identiques
+                            if (member.MemberId == item.MemberId)
+                            {
+                                associ.MemberId = item.MemberId;
+                                associ.ProjetId = projet.ProjetId;
+                                break;
+                            }
+                            db.Associs.Add(associ);
+                        } 
                 }
+                db.SaveChanges();
             }
             return RedirectToAction("AddProject");
         }

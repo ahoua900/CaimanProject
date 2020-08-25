@@ -48,22 +48,22 @@
                             <h1>Choix des membres</h1>
                         </div>
                     </div>
-                    @*@foreach (var item in Model.Specialites)
+                    @foreach (var item in Model.Specialites)
                     {
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                             <div class="simple-card">
                                 <div class="simple-card__content">
                                     <h3>@item.SpecialiteName</h3>
                                     <ul class="dmembers-list">
-                                        @foreach (var it in Model.Members.Where(s => s.Specialite == item.SpecialiteName))
+                                        @foreach (var it in Model.Members.Where(s => s.Specialite == item.SpecialiteName).OrderByDescending(s=>s.MemberId))
                                         {
                                             <li>
                                                 <div class="form__radio-group">
-                                                    <input type="checkbox" name="">
+                                                    <input type="radio" name="MemberId" id="MemberId" value="@it.MemberId">
                                                     <label class="form__radio-label">
                                                         <div class="member-line">
                                                             <div class="photo-box " style="border:2px solid @item.SpecialiteColor">
-                                                                <img src="/Fichier/@it.MemberImageName" alt="username">
+                                                                <img src="/Fichier/@it.MemberImageName" >
                                                             </div>
                                                             <div class="member-line__info">
                                                                 <h4>@it.MemberName @it.MemberPnom</h4>
@@ -93,7 +93,7 @@
                             </div>
                         </div>
                     }
-*@
+
 
                 </div>
                 <button type="submit" class="btn-green">

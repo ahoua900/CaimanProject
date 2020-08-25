@@ -13,13 +13,14 @@ namespace CaimanProject.DAL
 
 
 
-       /* public DbSet<SocialNetwork> SocialNetworks { get; set; }
+        /* 
 
-        public DbSet<Transport> Transports { get; set; }
+         public DbSet<Transport> Transports { get; set; }
 
 
-       */
-       /* public DbSet<Associ> Associs { get; set; }*/
+        */
+        public DbSet<SocialNetwork> SocialNetworks { get; set; }
+        public DbSet<Associ> Associs { get; set; }
         public DbSet<Member> Members { get; set; } 
         public DbSet<Competence> Competences { get; set; }
         public DbSet<Specialite> Specialites { get; set; }

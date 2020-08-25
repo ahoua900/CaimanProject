@@ -265,6 +265,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DepartementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberCtController.cs" />
     <Compile Include="Controllers\NotesController.cs" />
@@ -307,6 +308,18 @@
     <Compile Include="Migrations\20200824153339_ajoutdenotes.cs" />
     <Compile Include="Migrations\20200824153339_ajoutdenotes.designer.cs">
       <DependentUpon>20200824153339_ajoutdenotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200825084904_association.cs" />
+    <Compile Include="Migrations\20200825084904_association.designer.cs">
+      <DependentUpon>20200825084904_association.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200825085349_addbool.cs" />
+    <Compile Include="Migrations\20200825085349_addbool.designer.cs">
+      <DependentUpon>20200825085349_addbool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200825114449_addsocial.cs" />
+    <Compile Include="Migrations\20200825114449_addsocial.designer.cs">
+      <DependentUpon>20200825114449_addsocial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DbCaimanContextModelSnapshot.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -422,6 +435,7 @@
     <Content Include="Views\Notes\AddNotes.cshtml" />
     <Content Include="Views\Notes\AllNotes.cshtml" />
     <Content Include="Views\Notes\Readmore.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

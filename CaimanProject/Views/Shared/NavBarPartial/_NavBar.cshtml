@@ -1,7 +1,17 @@
-﻿  <div class="top-bar">
+﻿@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using CaimanProject.Models;
+
+@{ 
+    var UserId = User.Identity.GetUserId();
+    var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+    var currentUser = manager.FindById(User.Identity.GetUserId());
+}
+
+<div class="top-bar">
         <div class="block">
             <div class="container-fluid">
-                <h3>Kay Donald admin</h3>
+                <h3>@currentUser.AdminName @currentUser.AdminPnom</h3>
             </div>
         </div>
     </div>
@@ -64,6 +74,12 @@
                         <div id="resmenu">
                             <img src="~/Content/icons/menu.svg" alt="">
                         </div>
+                    </li>
+                    <li>
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()<a href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a>
+                        }
                     </li>
                 </ul>
             </div>

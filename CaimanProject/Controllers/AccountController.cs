@@ -151,8 +151,7 @@ namespace CaimanProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                var FullName = model.AdminName + " " + model.AdminPnom;
-                var user = new ApplicationUser { UserName = FullName, Email = model.Email, AdminName = model.AdminName, AdminPnom = model.AdminPnom, Sexe = model.Sexe};
+                var user = new ApplicationUser { UserName = model.AdminName, Email = model.Email, AdminName = model.AdminName, AdminPnom = model.AdminPnom, Sexe = model.Sexe};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

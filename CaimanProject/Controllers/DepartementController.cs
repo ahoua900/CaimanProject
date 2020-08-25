@@ -96,11 +96,14 @@ namespace CaimanProject.Controllers
                 ViewData["message"] = "Turquoise";
             if (bd.Specialite == "Multimedia")
                 ViewData["message"] = "Black";
+
+            ViewBag.mem = db.Competences.Where(s => s.IdMembre == id).ToList();
+            ViewBag.social = db.SocialNetworks.Where(s => s.Idmember == id).ToList();
             return View(bd);
         }
 
         [HttpPost]
-        public ActionResult ProfilMember(Member member, int id)
+        public ActionResult ProfilMember(Member member,Competence competence,SocialNetwork socialNetwork, int id)
         {
             var bd = db.Members.Find(id);
 
@@ -132,7 +135,7 @@ namespace CaimanProject.Controllers
                 db.Members.Update(bd);
                 db.SaveChanges();
             }
-            else if(member.MemberPnom == null && member.MemberIsArchived == null)
+            else if(member.MemberPnom == null && member.MemberIsArchived == null && competence.CompetenceName == null && socialNetwork.NetworkName == null)
             {
                 bd.MemberNote = member.MemberNote;
                 db.Members.Update(bd);
@@ -146,8 +149,19 @@ namespace CaimanProject.Controllers
                 db.SaveChanges();
             }
 
+            if (competence.CompetenceName != null)
+            {
+                competence.IdMembre = id;
+                db.Competences.Add(competence);
+                db.SaveChanges();
+            }
 
-           
+            if (socialNetwork.NetworkName != null)
+            {
+                socialNetwork.Idmember = id;
+                db.SocialNetworks.Add(socialNetwork);
+                db.SaveChanges();
+            }
             return RedirectToAction("ProfilMember");
         }
     }

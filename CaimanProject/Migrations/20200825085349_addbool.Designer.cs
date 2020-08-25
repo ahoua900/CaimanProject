@@ -4,14 +4,16 @@ using CaimanProject.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CaimanProject.Migrations
 {
     [DbContext(typeof(DbCaimanContext))]
-    partial class DbCaimanContextModelSnapshot : ModelSnapshot
+    [Migration("20200825085349_addbool")]
+    partial class addbool
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -215,27 +217,6 @@ namespace CaimanProject.Migrations
                     b.HasKey("ProjetId");
 
                     b.ToTable("Projets");
-                });
-
-            modelBuilder.Entity("CaimanProject.Models.SocialNetwork", b =>
-                {
-                    b.Property<int>("SocialNetworkId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Idmember")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NetworkLink")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NetworkName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("SocialNetworkId");
-
-                    b.ToTable("SocialNetworks");
                 });
 
             modelBuilder.Entity("CaimanProject.Models.Specialite", b =>
