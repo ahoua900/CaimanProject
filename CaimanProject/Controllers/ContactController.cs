@@ -74,6 +74,20 @@ namespace CaimanProject.Controllers
             return View();
         }
 
+   
+        public ActionResult SuppriContact(int id)
+        {
+            Contact contact = db.Contacts.Find(id);
+            if (contact !=null)
+            {
+                db.Contacts.Remove(contact);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Contact");
+        }
+
+
+
         private List<Contact> GetContact()
         {
            var contact = db.Contacts.ToList();

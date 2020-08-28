@@ -64,9 +64,13 @@
                                 </div>
                             </li>
                         }
-                        <li>
-                            <h4>@ViewBag.Page sur @ViewBag.MaxPage</h4>
-                        </li>
+                        @if (ViewBag.Page < ViewBag.MaxPage)
+                        {
+                            <li>
+                                <h4>@ViewBag.Page sur @ViewBag.MaxPage</h4>
+                            </li>
+                        }
+
 
                         @if (ViewBag.Page < ViewBag.MaxPage)
                         {

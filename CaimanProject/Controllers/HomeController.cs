@@ -17,13 +17,14 @@ namespace CaimanProject.Controllers
         DbCaimanContext db = new DbCaimanContext();
         public ActionResult Index()
         {
+            var mem = GetMembers();
             var spe = GetSpecialite();
-          
             var pro = Getprojet();
+            
             var mode = new ViewModel();
             mode.Specialites = spe;
-           /* mode.Membre = men;*/
             mode.Projets = pro;
+            mode.Membre = mem;
             return View(mode);
            
         }
@@ -31,12 +32,15 @@ namespace CaimanProject.Controllers
        
 
         public ActionResult VueProjet(int id)
-        {
+        {          
             var not = GetNote(id);
             var pros = GetProd(id);
+            var ass = GetAsso();
             var ne = new ViewM();
+            ne.Membre = GetMembers();
             ne.Projets = pros;
             ne.notePs = not;
+            ne.Associs = ass;
             ViewBag.list = db.Members.ToList();
             return View(ne);
         }
@@ -44,6 +48,31 @@ namespace CaimanProject.Controllers
         private List<NoteP> GetNote(int id)
         {
             return db.NotePs.Where(s=> s.ProjetNote == id).ToList();
+        }
+
+        private List<Member> GetMembers()
+        {
+            var bd = from s in db.Associs select s;
+            var id = 0;
+            var ids = 0;
+            foreach (var item in bd)
+            {
+                id = item.MemberId;
+                ids = item.ProjetId;
+            }
+            ViewBag.Men = db.Projets.Where(s => s.ProjetId == ids).ToList();
+            return db.Members.Where(s => s.MemberId == id).ToList();
+        }
+        private List<Associ> GetAsso()
+        {
+            var bd = from s in db.Projets select s;
+            var id = 0;
+            foreach (var item in bd)
+            {
+                id = item.ProjetId;
+            }
+
+            return db.Associs.Where(s => s.ProjetId == id).ToList();
         }
 
         [HttpPost]
@@ -65,7 +94,9 @@ namespace CaimanProject.Controllers
 
     private List<Projet> Getprojet()
     {
-        var bd = db.Projets.Where(s => s.IsArchieved == false || s.ProjetProgressBar < 100);
+    
+
+            var bd = db.Projets.Where(s => s.IsArchieved == false || s.ProjetProgressBar < 100 );
         return bd.OrderByDescending(s => s.ProjetId).ToList();
     }
 
@@ -104,19 +135,13 @@ namespace CaimanProject.Controllers
                 projet.ProjetDateDebut = DateTime.Now;
                 db.Projets.Add(projet);
                 db.SaveChanges();
-                    //Boucle et recupere les Id des membres
-                    var bd = from s in db.Members select s;
-                        foreach (var item in bd)
-                        {
-                        //fait le verification s'ils sont identiques
-                            if (member.MemberId == item.MemberId)
-                            {
-                                associ.MemberId = item.MemberId;
-                                associ.ProjetId = projet.ProjetId;
-                                break;
-                            }
-                            db.Associs.Add(associ);
-                        } 
+                //ajoute les id du projet et du membre dans une table 
+                associ.MemberId = member.MemberId;
+                associ.ProjetId = projet.ProjetId;
+                db.Associs.Add(associ);
+                    var bd = db.Members.Find(associ.MemberId);
+                   bd.MemberMissionActive =  member.MemberMissionActive++;
+                    db.Members.Update(bd);
                 }
                 db.SaveChanges();
             }

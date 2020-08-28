@@ -18,12 +18,15 @@
                                     <span>membres</span>
 
                                     <ul class="mb-0 mt-3">
-                                       
+                                       @foreach (var qt in Model.Membre)
+                                       {
                                         <li>
                                             <div class="br-frontend">
-                                                <img src="/Content/img/user.png" class="rounduser" alt="username" title="username">
+                                                <img src="~/Fichier/@qt.MemberImageName" class="rounduser" alt="username" title="@qt.MemberName">
                                             </div>
                                         </li>
+                                       }
+                                        
                                     </ul>
                                 </div>
                             </div>

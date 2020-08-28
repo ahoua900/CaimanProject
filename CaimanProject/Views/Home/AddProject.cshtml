@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-12">
                         <div class="departmentDesc">
-                            <h1>Choix des membres</h1>
+                            <h1>Choix du chef de projet</h1>
                         </div>
                     </div>
                     @foreach (var item in Model.Specialites)
@@ -59,12 +59,22 @@
                                         {
                                             <li>
                                                 <div class="form__radio-group">
-                                                    <input type="radio" name="MemberId" id="MemberId" value="@it.MemberId">
-                                                    <label class="form__radio-label">
+                                                    <input type="checkbox" name="MemberId" value="@it.MemberId">
+                                                    <label  class="form__radio-label">
                                                         <div class="member-line">
-                                                            <div class="photo-box " style="border:2px solid @item.SpecialiteColor">
-                                                                <img src="/Fichier/@it.MemberImageName" >
-                                                            </div>
+                                                            @if (it.MemberImageName == null)
+                                                            {
+                                                                <div class="photo-box " style="border:2px solid @item.SpecialiteColor">
+                                                                    <img src="~/Content/img/user.png">
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="photo-box " style="border:2px solid @item.SpecialiteColor">
+                                                                    <img src="/Fichier/@it.MemberImageName">
+                                                                </div>
+                                                            }
+
                                                             <div class="member-line__info">
                                                                 <h4>@it.MemberName @it.MemberPnom</h4>
                                                                 <div class="d-flex align-items-center">
@@ -76,9 +86,11 @@
                                                                     {
                                                                         <span>@it.MemberMissonFin missions en cours -</span>
                                                                     }
-                                                                    <div class="round"></div>
-                                                                    <div class="round"></div>
-                                                                    <div class="round"></div>
+                                                                    @for (int i = 0; i < it.MemberNote;)
+                                                                    {
+                                                                        <div class="round"></div>
+                                                                        i++;
+                                                                    }
                                                                 </div>
                                                             </div>
                                                         </div>

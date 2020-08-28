@@ -39,34 +39,57 @@
                                 </div>
                             </div>
                             <ul class="dmembers-list">
-                                <li>
-                                    <a href="#">
-                                        <div class="member-line">
-                                            <div class="photo-box br-frontend">
-                                                <img src="/Content/img/user.png" alt="username">
-                                            </div>
-                                            <div class="member-line__info">
-                                                <h4>Koffi Anvi Yves Donald</h4>
-                                                <div class="d-flex align-items-center">
-                                                    <span>Front end -</span>&nbsp;
-                                                    <div class="round"></div>
-                                                    <div class="round"></div>
-                                                    <div class="round"></div>
+                                @foreach (var item in Model.Membre)
+                                {
+                                    foreach (var i in Model.Associs)
+                                    {
+                                        if (item.MemberId == i.MemberId && i.ProjetId == Model.Projets.ProjetId)
+                                        {
+                                            <li>
+                                                <a href="#">
+                                                    <div class="member-line">
+                                                        <div class="photo-box">
+                                                            @if (item.MemberImageName == null)
+                                                            {
+                                                                <img src="/Content/img/user.png">
+                                                            }
+                                                            else
+                                                            {
+                                                                <img src="~/Fichier/@item.MemberImageName">
+                                                            }
+                                                        </div>
+                                                        <div class="member-line__info">
+                                                            <h4></h4>
+                                                            <div class="d-flex align-items-center">
+                                                                <span>@item.Specialite-</span>&nbsp;
+                                                                @for (int a = 0; a < item.MemberNote;)
+                                                                {
+                                                                    <div class="round"></div>
+                                                                    a++;
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        }
+                                    }
+
+                                }
+
+                                @if (Model.Projets.IsArchieved == false)
+                                {
+                                    <li style="border-bottom: none;">
+                                        <a href="#" data-toggle="modal" data-target="#exampleModalLong">
+                                            <div class="member-line">
+                                                <div class="photo-box">
+                                                    <img src="/content/icons/add.svg" alt="username">
                                                 </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li style="border-bottom: none;">
-                                    <a href="#" data-toggle="modal" data-target="#exampleModalLong">
-                                        <div class="member-line">
-                                            <div class="photo-box">
-                                                <img src="/content/icons/add.svg" alt="username">
-                                            </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    </li>
+                                }
 
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -107,47 +130,54 @@
                                     </button>
                                 </a>
                                 &nbsp;&nbsp;
-                                <a href="/Notes/AddNotes/@Model.Projets.ProjetId">
-                                    <button class="btn-green">
-                                        Nouvelle note
-                                    </button>
-                                </a>
-                            </div>
+                                @if (Model.Projets.IsArchieved == false)
+                                {
+                                    <a href="/Notes/AddNotes/@Model.Projets.ProjetId">
+                                        <button class="btn-green">
+                                            Nouvelle note
+                                        </button>
+                                    </a>
+                                }
+                                </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-6">
-                    <h2 class="mb-5">Paramètres</h2>
-                    <div class="simple-card__content mb-5">
-                        <a href="#" data-toggle="modal" data-target="#progressModal">
-                            <button class="btn-green">
-                                Augmenter la progression
-                            </button>
-                        </a>
-                    </div>
+                @if (Model.Projets.IsArchieved == false)
+                {
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-6">
+                        <h2 class="mb-5">Paramètres</h2>
+                        <div class="simple-card__content mb-5">
+                            <a href="#" data-toggle="modal" data-target="#progressModal">
+                                <button class="btn-green">
+                                    Augmenter la progression
+                                </button>
+                            </a>
+                        </div>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="progressModal" tabindex="-1" role="dialog" aria-labelledby="progressModalTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content my-modal">
-                                <div class="modal-header br-none">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Actuellement : @Model.Projets.ProjetProgressBar %</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="#" class="formular" method="post">
-                                        <div class="form-group">
-                                            <input type="number" class="form-control" id="ProjetProgressBar" name="ProjetProgressBar" placeholder="progression du projet" max="99" min="0" value="@Model.Projets.ProjetProgressBar">
-                                        </div>
-                                        <button type="submit" class="btn-green">valider</button>
-                                    </form>
+                        <!-- Modal -->
+                        <div class="modal fade" id="progressModal" tabindex="-1" role="dialog" aria-labelledby="progressModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content my-modal">
+                                    <div class="modal-header br-none">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Actuellement : @Model.Projets.ProjetProgressBar %</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="#" class="formular" method="post">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" id="ProjetProgressBar" name="ProjetProgressBar" placeholder="progression du projet" max="99" min="0" value="@Model.Projets.ProjetProgressBar">
+                                            </div>
+                                            <button type="submit" class="btn-green">valider</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
+                
             </div>
 
         </div>
