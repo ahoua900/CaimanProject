@@ -1,5 +1,6 @@
 ﻿using CaimanProject.DAL;
 using CaimanProject.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
 using System.Collections.Generic;
@@ -24,13 +25,10 @@ namespace CaimanProject.Controllers
             var mode = new ViewModel();
             mode.Specialites = spe;
             mode.Projets = pro;
-            mode.Membre = mem;
+            mode.Members = mem;
             return View(mode);
            
         }
-
-       
-
         public ActionResult VueProjet(int id)
         {          
             var not = GetNote(id);
@@ -52,16 +50,7 @@ namespace CaimanProject.Controllers
 
         private List<Member> GetMembers()
         {
-            var bd = from s in db.Associs select s;
-            var id = 0;
-            var ids = 0;
-            foreach (var item in bd)
-            {
-                id = item.MemberId;
-                ids = item.ProjetId;
-            }
-            ViewBag.Men = db.Projets.Where(s => s.ProjetId == ids).ToList();
-            return db.Members.Where(s => s.MemberId == id).ToList();
+            return db.Members.ToList();
         }
         private List<Associ> GetAsso()
         {
@@ -121,7 +110,7 @@ namespace CaimanProject.Controllers
     }
 
     [HttpPost]
-    public ActionResult AddProject(Projet projet, Member member,Associ associ)
+    public ActionResult AddProject(Projet projet, Member member)
     {
         if (Request.Files.Count > 0)
         {
@@ -135,15 +124,18 @@ namespace CaimanProject.Controllers
                 projet.ProjetDateDebut = DateTime.Now;
                 db.Projets.Add(projet);
                 db.SaveChanges();
-                //ajoute les id du projet et du membre dans une table 
-                associ.MemberId = member.MemberId;
-                associ.ProjetId = projet.ProjetId;
-                db.Associs.Add(associ);
-                    var bd = db.Members.Find(associ.MemberId);
-                   bd.MemberMissionActive =  member.MemberMissionActive++;
-                    db.Members.Update(bd);
-                }
-                db.SaveChanges();
+
+                    if (member.MemberId != null)
+                    {
+                        var br = db.Members.Find(member.MemberId);
+                        br.ProjetId = projet.ProjetId;
+                        br.MemberMissionActive++;
+                        db.Members.Update(br);
+                        db.SaveChanges();
+                    }
+                    //ajoute les id du projet et du membre dans une table 
+
+                }            
             }
             return RedirectToAction("AddProject");
         }

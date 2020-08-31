@@ -273,53 +273,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20200819150732_colonnemembres.cs" />
-    <Compile Include="Migrations\20200819150732_colonnemembres.designer.cs">
-      <DependentUpon>20200819150732_colonnemembres.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200819164213_colonnemembr.cs" />
-    <Compile Include="Migrations\20200819164213_colonnemembr.designer.cs">
-      <DependentUpon>20200819164213_colonnemembr.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200820125514_ajoutcomptence.cs" />
-    <Compile Include="Migrations\20200820125514_ajoutcomptence.designer.cs">
-      <DependentUpon>20200820125514_ajoutcomptence.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200820142419_updates.cs" />
-    <Compile Include="Migrations\20200820142419_updates.designer.cs">
-      <DependentUpon>20200820142419_updates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200820142536_update.cs" />
-    <Compile Include="Migrations\20200820142536_update.designer.cs">
-      <DependentUpon>20200820142536_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200820164058_AddConnexion.cs" />
-    <Compile Include="Migrations\20200820164058_AddConnexion.designer.cs">
-      <DependentUpon>20200820164058_AddConnexion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200820164804_AddAuth.cs" />
-    <Compile Include="Migrations\20200820164804_AddAuth.designer.cs">
-      <DependentUpon>20200820164804_AddAuth.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200824112348_ajoutactif.cs" />
-    <Compile Include="Migrations\20200824112348_ajoutactif.designer.cs">
-      <DependentUpon>20200824112348_ajoutactif.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200824153339_ajoutdenotes.cs" />
-    <Compile Include="Migrations\20200824153339_ajoutdenotes.designer.cs">
-      <DependentUpon>20200824153339_ajoutdenotes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200825084904_association.cs" />
-    <Compile Include="Migrations\20200825084904_association.designer.cs">
-      <DependentUpon>20200825084904_association.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200825085349_addbool.cs" />
-    <Compile Include="Migrations\20200825085349_addbool.designer.cs">
-      <DependentUpon>20200825085349_addbool.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200825114449_addsocial.cs" />
-    <Compile Include="Migrations\20200825114449_addsocial.designer.cs">
-      <DependentUpon>20200825114449_addsocial.cs</DependentUpon>
+    <Compile Include="Migrations\20200831163856_initialmigration.cs" />
+    <Compile Include="Migrations\20200831163856_initialmigration.designer.cs">
+      <DependentUpon>20200831163856_initialmigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DbCaimanContextModelSnapshot.cs" />
     <Compile Include="Models\AccountViewModels.cs" />

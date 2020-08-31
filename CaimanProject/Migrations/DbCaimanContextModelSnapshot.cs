@@ -146,6 +146,9 @@ namespace CaimanProject.Migrations
                     b.Property<string>("MemberStatus")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ProjetId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Specialite")
                         .HasColumnType("nvarchar(max)");
 

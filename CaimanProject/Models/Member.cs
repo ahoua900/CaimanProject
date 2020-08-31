@@ -52,6 +52,8 @@ namespace CaimanProject.Models
 
         public string Transport { get; set; }
 
+        public int ProjetId { get; set; }
+
     }
 
 

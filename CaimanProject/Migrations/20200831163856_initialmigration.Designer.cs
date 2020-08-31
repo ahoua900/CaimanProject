@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CaimanProject.Migrations
 {
     [DbContext(typeof(DbCaimanContext))]
-    [Migration("20200824153339_ajoutdenotes")]
-    partial class ajoutdenotes
+    [Migration("20200831163856_initialmigration")]
+    partial class initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,24 @@ namespace CaimanProject.Migrations
                 .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("CaimanProject.Models.Associ", b =>
+                {
+                    b.Property<int>("AssociKey")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("MemberId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProjetId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AssociKey");
+
+                    b.ToTable("Associs");
+                });
 
             modelBuilder.Entity("CaimanProject.Models.Competence", b =>
                 {
@@ -31,7 +49,7 @@ namespace CaimanProject.Migrations
                     b.Property<string>("CompetenceName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Idmembre")
+                    b.Property<int>("IdMembre")
                         .HasColumnType("int");
 
                     b.HasKey("CompetenceId");
@@ -77,6 +95,9 @@ namespace CaimanProject.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("IsActif")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSelecte")
                         .HasColumnType("bit");
 
                     b.Property<string>("MemberCommune")
@@ -126,6 +147,9 @@ namespace CaimanProject.Migrations
 
                     b.Property<string>("MemberStatus")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProjetId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Specialite")
                         .HasColumnType("nvarchar(max)");
@@ -196,6 +220,27 @@ namespace CaimanProject.Migrations
                     b.HasKey("ProjetId");
 
                     b.ToTable("Projets");
+                });
+
+            modelBuilder.Entity("CaimanProject.Models.SocialNetwork", b =>
+                {
+                    b.Property<int>("SocialNetworkId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Idmember")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NetworkLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NetworkName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SocialNetworkId");
+
+                    b.ToTable("SocialNetworks");
                 });
 
             modelBuilder.Entity("CaimanProject.Models.Specialite", b =>

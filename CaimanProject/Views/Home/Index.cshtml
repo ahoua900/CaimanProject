@@ -18,15 +18,20 @@
                                     <span>membres</span>
 
                                     <ul class="mb-0 mt-3">
-                                       @foreach (var qt in Model.Membre)
-                                       {
-                                        <li>
-                                            <div class="br-frontend">
-                                                <img src="~/Fichier/@qt.MemberImageName" class="rounduser" alt="username" title="@qt.MemberName">
-                                            </div>
-                                        </li>
-                                       }
-                                        
+                                        @foreach (var qt in Model.Members.Where(s => s.ProjetId == item.ProjetId).ToList())
+                                        {
+                                            while (true)
+                                            {
+                                                <li>
+                                                    <div class="br-frontend">
+                                                        <img src="~/Fichier/@qt.MemberImageName" class="rounduser" alt="username" title="@qt.MemberName">
+                                                    </div>
+                                                </li>
+                                                break;
+                                            }
+
+                                        }
+
                                     </ul>
                                 </div>
                             </div>
