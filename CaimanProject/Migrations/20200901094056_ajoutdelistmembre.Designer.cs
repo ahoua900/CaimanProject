@@ -4,14 +4,16 @@ using CaimanProject.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CaimanProject.Migrations
 {
     [DbContext(typeof(DbCaimanContext))]
-    partial class DbCaimanContextModelSnapshot : ModelSnapshot
+    [Migration("20200901094056_ajoutdelistmembre")]
+    partial class ajoutdelistmembre
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -260,39 +262,6 @@ namespace CaimanProject.Migrations
                     b.HasKey("SpecialiteId");
 
                     b.ToTable("Specialites");
-                });
-
-            modelBuilder.Entity("CaimanProject.Models.User", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ConfirmPassword")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserMail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserPhone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserPnom")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserSexe")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CaimanProject.Models.Associ", b =>

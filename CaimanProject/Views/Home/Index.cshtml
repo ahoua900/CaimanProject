@@ -18,7 +18,7 @@
                                     <span>membres</span>
 
                                     <ul class="mb-0 mt-3">
-                                        @foreach (var qt in Model.Members.Where(s => s.ProjetId == item.ProjetId).ToList())
+                                        @foreach (var qt in Model.Members)
                                         {
                                             while (true)
                                             {

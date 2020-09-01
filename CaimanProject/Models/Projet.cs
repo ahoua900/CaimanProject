@@ -26,7 +26,9 @@ namespace CaimanProject.Models
         public int ProjetMoney { get; set; }
         public bool IsArchieved { get; set; }
 
-        public string BilanProjet { get; set; }     
+        public string BilanProjet { get; set; }
+        
+        public virtual ICollection<Associ> Associs { get; set; }
  
     }
 }

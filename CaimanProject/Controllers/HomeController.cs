@@ -11,8 +11,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace CaimanProject.Controllers
-{ 
-    /*[Authorize]*/
+{
     public class HomeController : Controller
     {
         DbCaimanContext db = new DbCaimanContext();
@@ -122,23 +121,38 @@ namespace CaimanProject.Controllers
                 file.SaveAs(path);
                 projet.ProjetCahierCharge = fileName;
                 projet.ProjetDateDebut = DateTime.Now;
-                db.Projets.Add(projet);
-                db.SaveChanges();
-
+                //ajout de projet en associant les Id
+                projet.Associs = new List<Associ>();
                     if (member.MemberId != null)
                     {
-                        var br = db.Members.Find(member.MemberId);
-                        br.ProjetId = projet.ProjetId;
-                        br.MemberMissionActive++;
-                        db.Members.Update(br);
+                        member.IsSelecte = true;
+
+                        //recupere la liste des membres selectionnés
+                        var memberselect = db.Members.Where(s => s.IsSelecte == true).ToList();
+
+                        //Pour tout les membres selectionnés creer un nouveau membre et referencer les id
+                        foreach (var item in memberselect)
+                        {
+                            var members = new Member { MemberId = item.MemberId };
+
+                            //joindre les memebres selectionnés a ma table
+                            db.Members.Attach(members);
+                            var associ = new Associ { Member = member };
+
+                            //ajouter la liste d'association
+                            projet.Associs.Add(associ);
+                        }
+                        //Sauvegarder en bd
+                        db.Projets.Add(projet);
                         db.SaveChanges();
                     }
-                    //ajoute les id du projet et du membre dans une table 
-
-                }            
-            }
-            return RedirectToAction("AddProject");
+                    
+                   
+                    
+            }            
         }
+            return RedirectToAction("AddProject");
+    }
 
         public ActionResult Directive(int id)
         {

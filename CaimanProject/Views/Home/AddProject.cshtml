@@ -55,12 +55,13 @@
                                 <div class="simple-card__content">
                                     <h3>@item.SpecialiteName</h3>
                                     <ul class="dmembers-list">
-                                        @foreach (var it in Model.Members.Where(s => s.Specialite == item.SpecialiteName).OrderByDescending(s=>s.MemberId))
+                                        @foreach (var it in Model.Members.Where(s => s.Specialite == item.SpecialiteName))
                                         {
                                             <li>
                                                 <div class="form__radio-group">
-                                                    <input type="checkbox" name="MemberId" value="@it.MemberId">
-                                                    <label  class="form__radio-label"for="@it.MemberId">
+                                                    <input type="checkbox" name="IsSelecte" id="@it.MemberId"  value="@it.MemberId">
+                                                    <label for="@it.MemberId" class="form__radio-label">
+                                                        
                                                         <div class="member-line">
                                                             @if (it.MemberImageName == null)
                                                             {
@@ -78,13 +79,13 @@
                                                             <div class="member-line__info">
                                                                 <h4>@it.MemberName @it.MemberPnom</h4>
                                                                 <div class="d-flex align-items-center">
-                                                                    @if (@it.MemberMissonFin == null)
+                                                                    @if (@it.MemberMissionActive == null)
                                                                     {
                                                                         <span>0 missions en cours -</span>
                                                                     }
                                                                     else
                                                                     {
-                                                                        <span>@it.MemberMissonFin missions en cours -</span>
+                                                                        <span>@it.MemberMissionActive missions en cours -</span>
                                                                     }
                                                                     @for (int i = 0; i < it.MemberNote;)
                                                                     {

@@ -52,7 +52,7 @@ namespace CaimanProject.Models
 
         public string Transport { get; set; }
 
-        public int ProjetId { get; set; }
+        public virtual ICollection<Associ> Associs { get; set; }
 
     }
 

@@ -81,7 +81,7 @@
                                             }
                                             else
                                             {
-                                            <h4>@Html.DisplayFor(model => model.MemberMissonFin) missions en cours</h4>
+                                            <h4>@Html.DisplayFor(model => model.MemberMissionActive) missions en cours</h4>
                                             }
                                             
                                         </div>
@@ -387,21 +387,18 @@
                                                         <hr class="mt-5 mb-5">
                                                         <form action="#" class="formular">
                                                             <div class="form__group">
-                                                                <div class="form__radio-group">
-                                                                    <input type="checkbox" class="form__radio-input" id="net1" name="network">
-                                                                    <label for="net1" class="form__radio-label">
-                                                                        <span class="form__radio-button"></span>
-                                                                        Twitter : https://www.instagram.com/
-                                                                    </label>
-                                                                </div>
+                                                                @foreach (var item in ViewBag.social)
+                                                                {
+                                                                    <div class="form__radio-group">
+                                                                        <input type="checkbox" class="form__radio-input" id="@item.NetworkName" name="SocialNetworkId">
+                                                                        <label for="@item.NetworkName" class="form__radio-label">
+                                                                            <span class="form__radio-button"></span>
+                                                                            @item.NetworkName : @item.NetworkLink
+                                                                        </label>
+                                                                    </div>
+                                                                }
 
-                                                                <div class="form__radio-group">
-                                                                    <input type="checkbox" class="form__radio-input" id="net2" name="network">
-                                                                    <label for="net2" class="form__radio-label">
-                                                                        <span class="form__radio-button"></span>
-                                                                        Instagram : https://www.instagram.com/
-                                                                    </label>
-                                                                </div>
+
                                                             </div>
                                                             <button type="submit" class="btn-green">
                                                                 Supprimer
