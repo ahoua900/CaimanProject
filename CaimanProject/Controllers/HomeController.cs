@@ -15,12 +15,12 @@ namespace CaimanProject.Controllers
     public class HomeController : Controller
     {
         DbCaimanContext db = new DbCaimanContext();
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
             var mem = GetMembers();
             var spe = GetSpecialite();
             var pro = Getprojet();
-            
+            ViewBag.Nom = db.Users.Find(id);
             var mode = new ViewModel();
             mode.Specialites = spe;
             mode.Projets = pro;
@@ -123,10 +123,6 @@ namespace CaimanProject.Controllers
                 projet.ProjetDateDebut = DateTime.Now;
                 //ajout de projet en associant les Id
                 projet.Associs = new List<Associ>();
-                    if (member.MemberId != null)
-                    {
-                        member.IsSelecte = true;
-
                         //recupere la liste des membres selectionnés
                         var memberselect = db.Members.Where(s => s.IsSelecte == true).ToList();
 
@@ -143,13 +139,10 @@ namespace CaimanProject.Controllers
                             projet.Associs.Add(associ);
                         }
                         //Sauvegarder en bd
-                        db.Projets.Add(projet);
+                        db.Projets.AddRange(projet);
                         db.SaveChanges();
-                    }
                     
-                   
-                    
-            }            
+            }          
         }
             return RedirectToAction("AddProject");
     }

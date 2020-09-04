@@ -147,7 +147,7 @@ namespace CaimanProject.Controllers
                 db.Members.Update(bd);
                 db.SaveChanges();
             }
-            else if(member.MemberPnom == null && member.MemberIsArchived == null && competence.CompetenceName == null && socialNetwork.NetworkName == null)
+            else if(member.MemberNote != null)
             {
                 bd.MemberNote = member.MemberNote;
                 db.Members.Update(bd);

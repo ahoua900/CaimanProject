@@ -12,12 +12,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    @if (User.Identity.IsAuthenticated)
+    @if (User.Identity.IsAuthenticated == false)
     {
         <div class="top-bar">
             <div class="block">
                 <div class="container-fluid">
-                    <h3>Kay Donald admin</h3>
+                    <h3>@User.Identity.Name</h3>
                 </div>
             </div>
         </div>

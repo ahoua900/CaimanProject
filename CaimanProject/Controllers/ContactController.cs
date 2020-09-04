@@ -110,10 +110,7 @@ namespace CaimanProject.Controllers
                 db.SaveChanges();
                 return View();
             }
-            else
-            {
-                return Content("Vos information sont pas totalement complètes");
-            }
+            return View();
         }       
     }
 }

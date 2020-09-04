@@ -68,7 +68,7 @@ namespace CaimanProject.Controllers
 
                 if (isValidUser != null)
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserMail, false); //Ticket d'authentification, valeur false pur empêcher l'enregistrement des cookies sur le navigateur
+                    FormsAuthentication.SetAuthCookie(model.UserMail, true); //Ticket d'authentification, valeur false pur empêcher l'enregistrement des cookies sur le navigateur
                     return RedirectToAction("Index", "Home");
                 }
                 else
